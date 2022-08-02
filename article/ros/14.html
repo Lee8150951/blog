@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MoveIt!机械臂控制（四） | Oreo&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/blog/logo.png">
+    <meta name="description" content="我奔涌的暖流 寻找你的海洋">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.6e7466a2.css" as="style"><link rel="preload" href="/blog/assets/js/app.b808e0f6.js" as="script"><link rel="preload" href="/blog/assets/js/3.527c74a3.js" as="script"><link rel="preload" href="/blog/assets/js/1.832c2bf8.js" as="script"><link rel="preload" href="/blog/assets/js/109.9e9139c4.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.45e53a01.js"><link rel="prefetch" href="/blog/assets/js/100.0e7a5044.js"><link rel="prefetch" href="/blog/assets/js/101.edb45450.js"><link rel="prefetch" href="/blog/assets/js/102.83c8fa83.js"><link rel="prefetch" href="/blog/assets/js/103.1d8fdf8f.js"><link rel="prefetch" href="/blog/assets/js/104.68e3bcd8.js"><link rel="prefetch" href="/blog/assets/js/105.90e55d86.js"><link rel="prefetch" href="/blog/assets/js/106.24bfbf96.js"><link rel="prefetch" href="/blog/assets/js/107.0b47c7f9.js"><link rel="prefetch" href="/blog/assets/js/108.fa2af2ec.js"><link rel="prefetch" href="/blog/assets/js/11.805ddce2.js"><link rel="prefetch" href="/blog/assets/js/110.b3e91794.js"><link rel="prefetch" href="/blog/assets/js/111.e6db096d.js"><link rel="prefetch" href="/blog/assets/js/112.9fd4e785.js"><link rel="prefetch" href="/blog/assets/js/113.d180e44f.js"><link rel="prefetch" href="/blog/assets/js/114.baafd98f.js"><link rel="prefetch" href="/blog/assets/js/115.fc0ba306.js"><link rel="prefetch" href="/blog/assets/js/116.6bcdcbdd.js"><link rel="prefetch" href="/blog/assets/js/117.a1d1f784.js"><link rel="prefetch" href="/blog/assets/js/118.ba24d936.js"><link rel="prefetch" href="/blog/assets/js/119.049ec4d9.js"><link rel="prefetch" href="/blog/assets/js/12.b237dcc6.js"><link rel="prefetch" href="/blog/assets/js/13.af159f21.js"><link rel="prefetch" href="/blog/assets/js/14.42ea1354.js"><link rel="prefetch" href="/blog/assets/js/15.54877712.js"><link rel="prefetch" href="/blog/assets/js/16.d368caa9.js"><link rel="prefetch" href="/blog/assets/js/17.a786bc1a.js"><link rel="prefetch" href="/blog/assets/js/18.f73dd961.js"><link rel="prefetch" href="/blog/assets/js/19.5a563b69.js"><link rel="prefetch" href="/blog/assets/js/20.de03a37a.js"><link rel="prefetch" href="/blog/assets/js/21.444c354c.js"><link rel="prefetch" href="/blog/assets/js/22.1d4f402b.js"><link rel="prefetch" href="/blog/assets/js/23.4f00fa89.js"><link rel="prefetch" href="/blog/assets/js/24.393f96f9.js"><link rel="prefetch" href="/blog/assets/js/25.ee02e102.js"><link rel="prefetch" href="/blog/assets/js/26.b2d4c46c.js"><link rel="prefetch" href="/blog/assets/js/27.1698e989.js"><link rel="prefetch" href="/blog/assets/js/28.89c9b4ae.js"><link rel="prefetch" href="/blog/assets/js/29.9796018a.js"><link rel="prefetch" href="/blog/assets/js/30.e4c48001.js"><link rel="prefetch" href="/blog/assets/js/31.a22eecb3.js"><link rel="prefetch" href="/blog/assets/js/32.30047ec8.js"><link rel="prefetch" href="/blog/assets/js/33.b902c8c8.js"><link rel="prefetch" href="/blog/assets/js/34.4fb71194.js"><link rel="prefetch" href="/blog/assets/js/35.c7b308bc.js"><link rel="prefetch" href="/blog/assets/js/36.d712cccb.js"><link rel="prefetch" href="/blog/assets/js/37.a8169307.js"><link rel="prefetch" href="/blog/assets/js/38.583dccfb.js"><link rel="prefetch" href="/blog/assets/js/39.15a2b065.js"><link rel="prefetch" href="/blog/assets/js/4.15cffd70.js"><link rel="prefetch" href="/blog/assets/js/40.ec3247e5.js"><link rel="prefetch" href="/blog/assets/js/41.852d94a8.js"><link rel="prefetch" href="/blog/assets/js/42.dbc832c8.js"><link rel="prefetch" href="/blog/assets/js/43.cc17431b.js"><link rel="prefetch" href="/blog/assets/js/44.bf4241c4.js"><link rel="prefetch" href="/blog/assets/js/45.97114b98.js"><link rel="prefetch" href="/blog/assets/js/46.a84fabee.js"><link rel="prefetch" href="/blog/assets/js/47.3f5b4ddb.js"><link rel="prefetch" href="/blog/assets/js/48.1ad0c955.js"><link rel="prefetch" href="/blog/assets/js/49.aedeebf1.js"><link rel="prefetch" href="/blog/assets/js/5.ee387f14.js"><link rel="prefetch" href="/blog/assets/js/50.ea3511ce.js"><link rel="prefetch" href="/blog/assets/js/51.d1fab71f.js"><link rel="prefetch" href="/blog/assets/js/52.27fc42ac.js"><link rel="prefetch" href="/blog/assets/js/53.561e1cd0.js"><link rel="prefetch" href="/blog/assets/js/54.b9e36ff5.js"><link rel="prefetch" href="/blog/assets/js/55.8191d414.js"><link rel="prefetch" href="/blog/assets/js/56.03c77272.js"><link rel="prefetch" href="/blog/assets/js/57.9680c069.js"><link rel="prefetch" href="/blog/assets/js/58.036362fc.js"><link rel="prefetch" href="/blog/assets/js/59.ae4a9239.js"><link rel="prefetch" href="/blog/assets/js/6.4adc9307.js"><link rel="prefetch" href="/blog/assets/js/60.193cd8b8.js"><link rel="prefetch" href="/blog/assets/js/61.1637df96.js"><link rel="prefetch" href="/blog/assets/js/62.83f79dbf.js"><link rel="prefetch" href="/blog/assets/js/63.495ba5fd.js"><link rel="prefetch" href="/blog/assets/js/64.5723f524.js"><link rel="prefetch" href="/blog/assets/js/65.32ab755a.js"><link rel="prefetch" href="/blog/assets/js/66.fe293b1d.js"><link rel="prefetch" href="/blog/assets/js/67.d70f894b.js"><link rel="prefetch" href="/blog/assets/js/68.f2fecdc2.js"><link rel="prefetch" href="/blog/assets/js/69.9d02b1c7.js"><link rel="prefetch" href="/blog/assets/js/7.459f04e5.js"><link rel="prefetch" href="/blog/assets/js/70.18eaf151.js"><link rel="prefetch" href="/blog/assets/js/71.343d830c.js"><link rel="prefetch" href="/blog/assets/js/72.c7c24e56.js"><link rel="prefetch" href="/blog/assets/js/73.e28d060a.js"><link rel="prefetch" href="/blog/assets/js/74.187fc235.js"><link rel="prefetch" href="/blog/assets/js/75.80430747.js"><link rel="prefetch" href="/blog/assets/js/76.519ba9a3.js"><link rel="prefetch" href="/blog/assets/js/77.f420a514.js"><link rel="prefetch" href="/blog/assets/js/78.36787cfd.js"><link rel="prefetch" href="/blog/assets/js/79.18076946.js"><link rel="prefetch" href="/blog/assets/js/8.9604734a.js"><link rel="prefetch" href="/blog/assets/js/80.52ec254c.js"><link rel="prefetch" href="/blog/assets/js/81.7e92f9d7.js"><link rel="prefetch" href="/blog/assets/js/82.9d775810.js"><link rel="prefetch" href="/blog/assets/js/83.e42d88d5.js"><link rel="prefetch" href="/blog/assets/js/84.f691ec49.js"><link rel="prefetch" href="/blog/assets/js/85.0a9b28d2.js"><link rel="prefetch" href="/blog/assets/js/86.f299bfa1.js"><link rel="prefetch" href="/blog/assets/js/87.dbc2d7fe.js"><link rel="prefetch" href="/blog/assets/js/88.4d956b4c.js"><link rel="prefetch" href="/blog/assets/js/89.c1317d97.js"><link rel="prefetch" href="/blog/assets/js/9.220e196c.js"><link rel="prefetch" href="/blog/assets/js/90.124bc804.js"><link rel="prefetch" href="/blog/assets/js/91.1a4c7a5e.js"><link rel="prefetch" href="/blog/assets/js/92.d61bced9.js"><link rel="prefetch" href="/blog/assets/js/93.7918b8a0.js"><link rel="prefetch" href="/blog/assets/js/94.29b2b508.js"><link rel="prefetch" href="/blog/assets/js/95.e75b4fce.js"><link rel="prefetch" href="/blog/assets/js/96.9426d4b5.js"><link rel="prefetch" href="/blog/assets/js/97.1ab10063.js"><link rel="prefetch" href="/blog/assets/js/98.300505a1.js"><link rel="prefetch" href="/blog/assets/js/99.77643972.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.6e7466a2.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-1156296a><div data-v-1156296a><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1156296a data-v-1156296a><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-4e82dffc data-v-1156296a data-v-1156296a><h3 class="title" data-v-4e82dffc data-v-4e82dffc>Oreo's Blog</h3> <p class="description" data-v-4e82dffc data-v-4e82dffc>我奔涌的暖流 寻找你的海洋</p> <label id="box" class="inputBox" data-v-4e82dffc data-v-4e82dffc><input type="password" value="" data-v-4e82dffc> <span data-v-4e82dffc>Konck! Knock!</span> <button data-v-4e82dffc>OK</button></label> <div class="footer" data-v-4e82dffc data-v-4e82dffc><span data-v-4e82dffc><i class="iconfont reco-theme" data-v-4e82dffc></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-4e82dffc>vuePress-theme-reco</a></span> <span data-v-4e82dffc><i class="iconfont reco-copyright" data-v-4e82dffc></i> <a data-v-4e82dffc><span data-v-4e82dffc>Oreo!</span>
+            
+          <!---->
+          2022
+        </a></span></div></div> <div class="hide" data-v-1156296a><header class="navbar" data-v-1156296a><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><img src="/blog/avatar/logo.PNG" alt="Oreo's Blog" class="logo"> <span class="site-name">Oreo's Blog</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/categories/其他/" class="nav-link"><i class="undefined"></i>
+  其他
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/算法/" class="nav-link"><i class="undefined"></i>
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/C++/" class="nav-link"><i class="undefined"></i>
+  C++
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/STL/" class="nav-link"><i class="undefined"></i>
+  STL
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/数据/" class="nav-link"><i class="undefined"></i>
+  数据
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/前端/" class="nav-link"><i class="undefined"></i>
+  前端
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/python/" class="nav-link"><i class="undefined"></i>
+  python
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/MATLAB/" class="nav-link"><i class="undefined"></i>
+  MATLAB
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/后端/" class="nav-link"><i class="undefined"></i>
+  后端
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/OS/" class="nav-link"><i class="undefined"></i>
+  OS
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/ROS/" class="nav-link"><i class="undefined"></i>
+  ROS
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/路线图/" class="nav-link"><i class="undefined"></i>
+  路线图
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/blog/review/" class="nav-link"><i class="iconfont reco-blog"></i>
+  回顾
+</a></div><div class="nav-item"><a href="/blog/about/" class="nav-link"><i class="iconfont reco-account"></i>
+  关于
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1156296a></div> <aside class="sidebar" data-v-1156296a><div class="personal-info-wrapper" data-v-828910c6 data-v-1156296a><img src="/blog/avatar/avatar.jpg" alt="author-avatar" class="personal-img" data-v-828910c6> <h3 class="name" data-v-828910c6>
+    Oreo!
+  </h3> <div class="num" data-v-828910c6><div data-v-828910c6><h3 data-v-828910c6>109</h3> <h6 data-v-828910c6>文章</h6></div> <div data-v-828910c6><h3 data-v-828910c6>39</h3> <h6 data-v-828910c6>标签</h6></div></div> <ul class="social-links" data-v-828910c6></ul> <hr data-v-828910c6></div> <nav class="nav-links"><div class="nav-item"><a href="/blog/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/categories/其他/" class="nav-link"><i class="undefined"></i>
+  其他
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/算法/" class="nav-link"><i class="undefined"></i>
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/C++/" class="nav-link"><i class="undefined"></i>
+  C++
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/STL/" class="nav-link"><i class="undefined"></i>
+  STL
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/数据/" class="nav-link"><i class="undefined"></i>
+  数据
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/前端/" class="nav-link"><i class="undefined"></i>
+  前端
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/python/" class="nav-link"><i class="undefined"></i>
+  python
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/MATLAB/" class="nav-link"><i class="undefined"></i>
+  MATLAB
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/后端/" class="nav-link"><i class="undefined"></i>
+  后端
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/OS/" class="nav-link"><i class="undefined"></i>
+  OS
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/ROS/" class="nav-link"><i class="undefined"></i>
+  ROS
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/路线图/" class="nav-link"><i class="undefined"></i>
+  路线图
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/blog/review/" class="nav-link"><i class="iconfont reco-blog"></i>
+  回顾
+</a></div><div class="nav-item"><a href="/blog/about/" class="nav-link"><i class="iconfont reco-account"></i>
+  关于
+</a></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-4e82dffc data-v-1156296a><h3 class="title" data-v-4e82dffc data-v-4e82dffc>MoveIt!机械臂控制（四）</h3> <!----> <label id="box" class="inputBox" data-v-4e82dffc data-v-4e82dffc><input type="password" value="" data-v-4e82dffc> <span data-v-4e82dffc>Konck! Knock!</span> <button data-v-4e82dffc>OK</button></label> <div class="footer" data-v-4e82dffc data-v-4e82dffc><span data-v-4e82dffc><i class="iconfont reco-theme" data-v-4e82dffc></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-4e82dffc>vuePress-theme-reco</a></span> <span data-v-4e82dffc><i class="iconfont reco-copyright" data-v-4e82dffc></i> <a data-v-4e82dffc><span data-v-4e82dffc>Oreo!</span>
+            
+          <!---->
+          2022
+        </a></span></div></div> <div data-v-1156296a><main class="page"><section><div class="page-title"><h1 class="title">MoveIt!机械臂控制（四）</h1> <div data-v-1ff7123e><i class="iconfont reco-account" data-v-1ff7123e><span data-v-1ff7123e>Oreo!</span></i> <i class="iconfont reco-date" data-v-1ff7123e><span data-v-1ff7123e>2021/8/19</span></i> <i class="iconfont reco-eye" data-v-1ff7123e><span id="/blog/article/ros/14.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-1ff7123e><a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;"></a></span></i> <i class="tags iconfont reco-tag" data-v-1ff7123e><span class="tag-item" data-v-1ff7123e>ROS</span><span class="tag-item" data-v-1ff7123e>Python</span><span class="tag-item" data-v-1ff7123e>机器人开发</span><span class="tag-item" data-v-1ff7123e>MoveIt!</span></i></div></div> <div class="theme-reco-content content__default"><h2 id="一、moveit-编程"><a href="#一、moveit-编程" class="header-anchor">#</a> 一、MoveIt!编程</h2> <p>在实际应用中，GUI提供的功能有限，很多实现需要使用代码完成</p> <p>MoveIt!的move_group也提供了丰富的C++和Python的编程API</p> <h3 id="_1-1关节空间规则"><a href="#_1-1关节空间规则" class="header-anchor">#</a> 1.1关节空间规则</h3> <p>关节空间运动是机械臂常用的一种控制方法</p> <p><strong>关节空间：就是以关节角度为控制量的机器人运动，各关节之间相互独立，互不影响</strong></p> <p>机器人状态使用各轴位置来描述，在指定运动目标的机器人状态后，通过控制各州运动来达到目标位姿</p> <div class="language-xml extra-class"><pre class="language-xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>launch</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- 不使用仿真时间 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/use_sim_time<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>false<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+
+    <span class="token comment">&lt;!-- 启动 arbotix driver--&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>arg</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>sim<span class="token punctuation">&quot;</span></span> <span class="token attr-name">default</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>true<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>robot_description<span class="token punctuation">&quot;</span></span> <span class="token attr-name">command</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>$(find xacro)/xacro --inorder <span class="token punctuation">'</span>$(find marm_description)/urdf/arm.xacro<span class="token punctuation">'</span><span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>node</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>arbotix<span class="token punctuation">&quot;</span></span> <span class="token attr-name">pkg</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>arbotix_python<span class="token punctuation">&quot;</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>arbotix_driver<span class="token punctuation">&quot;</span></span> <span class="token attr-name">output</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>screen<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rosparam</span> <span class="token attr-name">file</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>$(find marm_description)/config/arm.yaml<span class="token punctuation">&quot;</span></span> <span class="token attr-name">command</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>load<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>sim<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>true<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>node</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>node</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>gripper_controller<span class="token punctuation">&quot;</span></span> <span class="token attr-name">pkg</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>arbotix_controllers<span class="token punctuation">&quot;</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>gripper_controller<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rosparam</span><span class="token punctuation">&gt;</span></span>
+            model: singlesided
+            invert: false
+            center: 0.0
+            pad_width: 0.004
+            finger_length: 0.08
+            min_opening: 0.0
+            max_opening: 0.06
+            joint: finger_joint1
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rosparam</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>node</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>node</span> <span class="token attr-name">pkg</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>robot_state_publisher<span class="token punctuation">&quot;</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>robot_state_publisher<span class="token punctuation">&quot;</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>rob_st_pub<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span> <span class="token attr-name">file</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>$(find marm_moveit_config)/launch/move_group.launch<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+
+    <span class="token comment">&lt;!-- 启动rviz可视化界面 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>node</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>rviz<span class="token punctuation">&quot;</span></span> <span class="token attr-name">pkg</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>rviz<span class="token punctuation">&quot;</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>rviz<span class="token punctuation">&quot;</span></span> <span class="token attr-name">args</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>-d $(find marm_planning)/config/pick_and_place.rviz<span class="token punctuation">&quot;</span></span> <span class="token attr-name">required</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>true<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>launch</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>该文件与启动ArbotiX控制器时所使用的launch文件类似，添加了启动move_group相关节点和RViz相关节点的操作</p> <p>当move_group启动时会自动加载已配置好的MoveIt!关节控制器</p> <p>使用如下命令实现对marm关节空间的运动测试：</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ roslaunch marm_planning arm_planning.launch
+$ rosrun marm_planning moveit_fk_demo.py
+</code></pre></div><p><code>moveit_fk_demo.py</code>控制的是机械臂的夹爪，使其能够进行闭合动作</p> <h4 id="_1-1-1源码"><a href="#_1-1-1源码" class="header-anchor">#</a> 1.1.1源码</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#!/usr/bin/env python</span>
+<span class="token comment"># -*- coding: utf-8 -*-</span>
+
+<span class="token keyword">import</span> rospy<span class="token punctuation">,</span> sys
+<span class="token keyword">import</span> moveit_commander
+<span class="token keyword">from</span> control_msgs<span class="token punctuation">.</span>msg <span class="token keyword">import</span> GripperCommand
+
+<span class="token keyword">class</span> <span class="token class-name">MoveItFkDemo</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 初始化move_group的API</span>
+        moveit_commander<span class="token punctuation">.</span>roscpp_initialize<span class="token punctuation">(</span>sys<span class="token punctuation">.</span>argv<span class="token punctuation">)</span>
+
+        <span class="token comment"># 初始化ROS节点</span>
+        rospy<span class="token punctuation">.</span>init_node<span class="token punctuation">(</span><span class="token string">'moveit_fk_demo'</span><span class="token punctuation">,</span> anonymous<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+ 
+        <span class="token comment"># 初始化需要使用move group控制的机械臂中的arm group</span>
+        arm <span class="token operator">=</span> moveit_commander<span class="token punctuation">.</span>MoveGroupCommander<span class="token punctuation">(</span><span class="token string">'arm'</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 初始化需要使用move group控制的机械臂中的gripper group</span>
+        gripper <span class="token operator">=</span> moveit_commander<span class="token punctuation">.</span>MoveGroupCommander<span class="token punctuation">(</span><span class="token string">'gripper'</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 设置机械臂和夹爪的允许误差值</span>
+        arm<span class="token punctuation">.</span>set_goal_joint_tolerance<span class="token punctuation">(</span><span class="token number">0.001</span><span class="token punctuation">)</span>
+        gripper<span class="token punctuation">.</span>set_goal_joint_tolerance<span class="token punctuation">(</span><span class="token number">0.001</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 控制机械臂先回到初始化位置</span>
+        arm<span class="token punctuation">.</span>set_named_target<span class="token punctuation">(</span><span class="token string">'home'</span><span class="token punctuation">)</span>
+        arm<span class="token punctuation">.</span>go<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        rospy<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+         
+        <span class="token comment"># 设置夹爪的目标位置，并控制夹爪运动</span>
+        gripper<span class="token punctuation">.</span>set_joint_value_target<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0.01</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        gripper<span class="token punctuation">.</span>go<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        rospy<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+         
+        <span class="token comment"># 设置机械臂的目标位置，使用六轴的位置数据进行描述（单位：弧度）</span>
+        joint_positions <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">0.0867</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1.274</span><span class="token punctuation">,</span> <span class="token number">0.02832</span><span class="token punctuation">,</span> <span class="token number">0.0820</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1.273</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.003</span><span class="token punctuation">]</span>
+        arm<span class="token punctuation">.</span>set_joint_value_target<span class="token punctuation">(</span>joint_positions<span class="token punctuation">)</span>
+                 
+        <span class="token comment"># 控制机械臂完成运动</span>
+        arm<span class="token punctuation">.</span>go<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        rospy<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 关闭并退出moveit</span>
+        moveit_commander<span class="token punctuation">.</span>roscpp_shutdown<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        moveit_commander<span class="token punctuation">.</span>os<span class="token punctuation">.</span>_exit<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">&quot;__main__&quot;</span><span class="token punctuation">:</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        MoveItFkDemo<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span> rospy<span class="token punctuation">.</span>ROSInterruptException<span class="token punctuation">:</span>
+        <span class="token keyword">pass</span>
+</code></pre></div><h4 id="_1-1-2代码分析"><a href="#_1-1-2代码分析" class="header-anchor">#</a> 1.1.2代码分析</h4> <ul><li>使用MoveIt!的API之前，需要导入Python接口模块，其中GripperCommand是用来控制夹爪的</li></ul> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">import</span> rospy<span class="token punctuation">,</span> sys
+<span class="token keyword">import</span> moveit_commander
+<span class="token keyword">from</span> control_msgs<span class="token punctuation">.</span>msg <span class="token keyword">import</span> GripperCommand
+</code></pre></div><ul><li>使用MoveIt!的PythonAPI之前，需要先对API进行初始化，初始化的底层依然使用roscpp接口，只是用了Python封装</li></ul> <div class="language-python extra-class"><pre class="language-python"><code>moveit_commander<span class="token punctuation">.</span>roscpp_initialize<span class="token punctuation">(</span>sys<span class="token punctuation">.</span>argv<span class="token punctuation">)</span>
+</code></pre></div><ul><li>在moveit_commander中提供一个重要的类<code>MoveGroupCommander</code>可以创建针对规划的控制对象</li></ul> <p>在该模拟情况中，有两个控制对象：机械臂本体和夹爪，所以都要进行初始化</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 初始化需要使用move group控制的机械臂中的arm group</span>
+arm <span class="token operator">=</span> moveit_commander<span class="token punctuation">.</span>MoveGroupCommander<span class="token punctuation">(</span><span class="token string">'arm'</span><span class="token punctuation">)</span>
+        
+<span class="token comment"># 初始化需要使用move group控制的机械臂中的gripper group</span>
+gripper <span class="token operator">=</span> moveit_commander<span class="token punctuation">.</span>MoveGroupCommander<span class="token punctuation">(</span><span class="token string">'gripper'</span><span class="token punctuation">)</span>
+</code></pre></div><ul><li>用代码来设置运动控制的允许误差，也就是说机器人各轴都运动到目标位置为某弧度的范围内，即认为达到目标</li></ul> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 设置机械臂和夹爪的允许误差值（单位为弧度）</span>
+arm<span class="token punctuation">.</span>set_goal_joint_tolerance<span class="token punctuation">(</span><span class="token number">0.001</span><span class="token punctuation">)</span>
+gripper<span class="token punctuation">.</span>set_goal_joint_tolerance<span class="token punctuation">(</span><span class="token number">0.001</span><span class="token punctuation">)</span>
+</code></pre></div><ul><li>配合Setup Assistant中设置的“home”位姿，在此处可以让机械臂回到初始位置</li></ul> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 控制机械臂先回到初始化位置</span>
+arm<span class="token punctuation">.</span>set_named_target<span class="token punctuation">(</span><span class="token string">'home'</span><span class="token punctuation">)</span>
+arm<span class="token punctuation">.</span>go<span class="token punctuation">(</span><span class="token punctuation">)</span>
+rospy<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+</code></pre></div><p>该段代码首先设置了运动位置，然后使用了<code>arm.go()</code>命令，即让机器人规划、运动到“home”，最后保持一段时间的延时确保机械臂完成运动<code>rospy.sleep(2)</code></p> <ul><li>配置运动的目标位姿，设置关节空间下目标位姿所使用的接口<code>set_joint_value_target()</code>参数是目标位姿各关节的弧度</li></ul> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 设置夹爪的目标位置，并控制夹爪运动</span>
+gripper<span class="token punctuation">.</span>set_joint_value_target<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0.01</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+gripper<span class="token punctuation">.</span>go<span class="token punctuation">(</span><span class="token punctuation">)</span>
+rospy<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+         
+<span class="token comment"># 设置机械臂的目标位置，使用六轴的位置数据进行描述（单位：弧度）</span>
+joint_positions <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">0.0867</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1.274</span><span class="token punctuation">,</span> <span class="token number">0.02832</span><span class="token punctuation">,</span> <span class="token number">0.0820</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1.273</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.003</span><span class="token punctuation">]</span>
+arm<span class="token punctuation">.</span>set_joint_value_target<span class="token punctuation">(</span>joint_positions<span class="token punctuation">)</span>
+</code></pre></div><ul><li>完成关节运动后关闭接口，退出程序</li></ul> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 关闭并退出moveit</span>
+moveit_commander<span class="token punctuation">.</span>roscpp_shutdown<span class="token punctuation">(</span><span class="token punctuation">)</span>
+moveit_commander<span class="token punctuation">.</span>os<span class="token punctuation">.</span>_exit<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="_1-2工作空间规划"><a href="#_1-2工作空间规划" class="header-anchor">#</a> 1.2工作空间规划</h3> <p>关节空间规划是不需要考虑机器人终端的姿态的</p> <p>与之对应的是工作空间规划，这种规划方式不在通过各轴位置给定，而是通过机器人终端的三维坐标与姿态给定，在进行运动规划时使用<strong>逆向运动学</strong>求解各轴位置</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ roslaunch marm_planning arm_planning.launch
+$ rosrun marm_planning moveit_ik_demo.py
+</code></pre></div><h4 id="_1-2-1源码"><a href="#_1-2-1源码" class="header-anchor">#</a> 1.2.1源码</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#!/usr/bin/env python</span>
+<span class="token comment"># -*- coding: utf-8 -*-</span>
+
+<span class="token keyword">import</span> rospy<span class="token punctuation">,</span> sys
+<span class="token keyword">import</span> moveit_commander
+<span class="token keyword">from</span> moveit_msgs<span class="token punctuation">.</span>msg <span class="token keyword">import</span> RobotTrajectory
+<span class="token keyword">from</span> trajectory_msgs<span class="token punctuation">.</span>msg <span class="token keyword">import</span> JointTrajectoryPoint
+
+<span class="token keyword">from</span> geometry_msgs<span class="token punctuation">.</span>msg <span class="token keyword">import</span> PoseStamped<span class="token punctuation">,</span> Pose
+<span class="token keyword">from</span> tf<span class="token punctuation">.</span>transformations <span class="token keyword">import</span> euler_from_quaternion<span class="token punctuation">,</span> quaternion_from_euler
+
+<span class="token keyword">class</span> <span class="token class-name">MoveItIkDemo</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 初始化move_group的API</span>
+        moveit_commander<span class="token punctuation">.</span>roscpp_initialize<span class="token punctuation">(</span>sys<span class="token punctuation">.</span>argv<span class="token punctuation">)</span>
+        
+        <span class="token comment"># 初始化ROS节点</span>
+        rospy<span class="token punctuation">.</span>init_node<span class="token punctuation">(</span><span class="token string">'moveit_ik_demo'</span><span class="token punctuation">)</span>
+                
+        <span class="token comment"># 初始化需要使用move group控制的机械臂中的arm group</span>
+        arm <span class="token operator">=</span> moveit_commander<span class="token punctuation">.</span>MoveGroupCommander<span class="token punctuation">(</span><span class="token string">'arm'</span><span class="token punctuation">)</span>
+                
+        <span class="token comment"># 获取终端link的名称</span>
+        end_effector_link <span class="token operator">=</span> arm<span class="token punctuation">.</span>get_end_effector_link<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                        
+        <span class="token comment"># 设置目标位置所使用的参考坐标系</span>
+        reference_frame <span class="token operator">=</span> <span class="token string">'base_link'</span>
+        arm<span class="token punctuation">.</span>set_pose_reference_frame<span class="token punctuation">(</span>reference_frame<span class="token punctuation">)</span>
+                
+        <span class="token comment"># 当运动规划失败后，允许重新规划</span>
+        arm<span class="token punctuation">.</span>allow_replanning<span class="token punctuation">(</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 设置位置(单位：米)和姿态（单位：弧度）的允许误差</span>
+        arm<span class="token punctuation">.</span>set_goal_position_tolerance<span class="token punctuation">(</span><span class="token number">0.01</span><span class="token punctuation">)</span>
+        arm<span class="token punctuation">.</span>set_goal_orientation_tolerance<span class="token punctuation">(</span><span class="token number">0.05</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 控制机械臂先回到初始化位置</span>
+        arm<span class="token punctuation">.</span>set_named_target<span class="token punctuation">(</span><span class="token string">'home'</span><span class="token punctuation">)</span>
+        arm<span class="token punctuation">.</span>go<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        rospy<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+               
+        <span class="token comment"># 设置机械臂工作空间中的目标位姿，位置使用x、y、z坐标描述，</span>
+        <span class="token comment"># 姿态使用四元数描述，基于base_link坐标系</span>
+        target_pose <span class="token operator">=</span> PoseStamped<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        target_pose<span class="token punctuation">.</span>header<span class="token punctuation">.</span>frame_id <span class="token operator">=</span> reference_frame
+        target_pose<span class="token punctuation">.</span>header<span class="token punctuation">.</span>stamp <span class="token operator">=</span> rospy<span class="token punctuation">.</span>Time<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span>     
+        target_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">0.191995</span>
+        target_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token number">0.213868</span>
+        target_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z <span class="token operator">=</span> <span class="token number">0.520436</span>
+        target_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">0.911822</span>
+        target_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">0.0269758</span>
+        target_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation<span class="token punctuation">.</span>z <span class="token operator">=</span> <span class="token number">0.285694</span>
+        target_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation<span class="token punctuation">.</span>w <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">0.293653</span>
+        
+        <span class="token comment"># 设置机器臂当前的状态作为运动初始状态</span>
+        arm<span class="token punctuation">.</span>set_start_state_to_current_state<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 设置机械臂终端运动的目标位姿</span>
+        arm<span class="token punctuation">.</span>set_pose_target<span class="token punctuation">(</span>target_pose<span class="token punctuation">,</span> end_effector_link<span class="token punctuation">)</span>
+        
+        <span class="token comment"># 规划运动路径</span>
+        traj <span class="token operator">=</span> arm<span class="token punctuation">.</span>plan<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 按照规划的运动路径控制机械臂运动</span>
+        arm<span class="token punctuation">.</span>execute<span class="token punctuation">(</span>traj<span class="token punctuation">)</span>
+        rospy<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+         
+        <span class="token comment"># 控制机械臂终端向右移动5cm</span>
+        arm<span class="token punctuation">.</span>shift_pose_target<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.05</span><span class="token punctuation">,</span> end_effector_link<span class="token punctuation">)</span>
+        arm<span class="token punctuation">.</span>go<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        rospy<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+  
+        <span class="token comment"># 控制机械臂终端反向旋转90度</span>
+        arm<span class="token punctuation">.</span>shift_pose_target<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1.57</span><span class="token punctuation">,</span> end_effector_link<span class="token punctuation">)</span>
+        arm<span class="token punctuation">.</span>go<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        rospy<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+           
+        <span class="token comment"># 控制机械臂回到初始化位置</span>
+        arm<span class="token punctuation">.</span>set_named_target<span class="token punctuation">(</span><span class="token string">'home'</span><span class="token punctuation">)</span>
+        arm<span class="token punctuation">.</span>go<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token comment"># 关闭并退出moveit</span>
+        moveit_commander<span class="token punctuation">.</span>roscpp_shutdown<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        moveit_commander<span class="token punctuation">.</span>os<span class="token punctuation">.</span>_exit<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">&quot;__main__&quot;</span><span class="token punctuation">:</span>
+    MoveItIkDemo<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="_1-2-2代码分析"><a href="#_1-2-2代码分析" class="header-anchor">#</a> 1.2.2代码分析</h4> <p>代码中很多部分和关节空间规划是相同的</p> <ul><li>获取link在模型文件中的名称</li></ul> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 获取终端link的名称</span>
+end_effector_link <span class="token operator">=</span> arm<span class="token punctuation">.</span>get_end_effector_link<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><ul><li>工作空间的位姿需要使用笛卡尔坐标值进行描述，所以必须声明该位姿所在坐标系</li></ul> <p>set_pose_reference_frame()用于设置目标位姿所在坐标系，这里设置的是机器人的基坐标<code>base_link</code></p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 设置目标位置所使用的参考坐标系</span>
+reference_frame <span class="token operator">=</span> <span class="token string">'base_link'</span>
+arm<span class="token punctuation">.</span>set_pose_reference_frame<span class="token punctuation">(</span>reference_frame<span class="token punctuation">)</span>
+</code></pre></div><ul><li>反向运动学求解时可能会出现无解或多解的问题，通过配置允许规划失败之后的重新规划</li></ul> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 当运动规划失败后，允许重新规划</span>
+arm<span class="token punctuation">.</span>allow_replanning<span class="token punctuation">(</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+</code></pre></div><ul><li>使用ROS中的PoseStamped描述机器人的目标位姿</li></ul> <p>首先需要设置位姿所在的参考坐标系，然后创建时间戳，最后设置目标位姿的xyz坐标值和四元数姿态值</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 设置机械臂工作空间中的目标位姿，位置使用x、y、z坐标描述，</span>
+<span class="token comment"># 姿态使用四元数描述，基于base_link坐标系</span>
+target_pose <span class="token operator">=</span> PoseStamped<span class="token punctuation">(</span><span class="token punctuation">)</span>
+target_pose<span class="token punctuation">.</span>header<span class="token punctuation">.</span>frame_id <span class="token operator">=</span> reference_frame
+target_pose<span class="token punctuation">.</span>header<span class="token punctuation">.</span>stamp <span class="token operator">=</span> rospy<span class="token punctuation">.</span>Time<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span>     
+target_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">0.191995</span>
+target_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token number">0.213868</span>
+target_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z <span class="token operator">=</span> <span class="token number">0.520436</span>
+target_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">0.911822</span>
+target_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">0.0269758</span>
+target_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation<span class="token punctuation">.</span>z <span class="token operator">=</span> <span class="token number">0.285694</span>
+target_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation<span class="token punctuation">.</span>w <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">0.293653</span>
+</code></pre></div><ul><li>规划起始状态，使用<code>set_start_state_to_current_state()</code>方法</li></ul> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 设置机器臂当前的状态作为运动初始状态</span>
+arm<span class="token punctuation">.</span>set_start_state_to_current_state<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        
+<span class="token comment"># 设置机械臂终端运动的目标位姿</span>
+arm<span class="token punctuation">.</span>set_pose_target<span class="token punctuation">(</span>target_pose<span class="token punctuation">,</span> end_effector_link<span class="token punctuation">)</span>
+</code></pre></div><ul><li>运动规划进行的第一步就是规划路径，使用plan()方法完成，如果路径规划成功，则会返回一条规划好的路径，然后execute()方法控制机器人完成；如果规划失败，会根据设置项重新规划</li></ul> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 规划运动路径</span>
+traj <span class="token operator">=</span> arm<span class="token punctuation">.</span>plan<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        
+<span class="token comment"># 按照规划的运动路径控制机械臂运动</span>
+arm<span class="token punctuation">.</span>execute<span class="token punctuation">(</span>traj<span class="token punctuation">)</span>
+rospy<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+</code></pre></div><ul><li>除了使用PoseStamped数据描述目标位姿进行运动规划之外，还可以使用shift_pose_target()实现单轴方向上的目标设置和规划</li></ul> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 控制机械臂终端向右移动5cm</span>
+arm<span class="token punctuation">.</span>shift_pose_target<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.05</span><span class="token punctuation">,</span> end_effector_link<span class="token punctuation">)</span>
+arm<span class="token punctuation">.</span>go<span class="token punctuation">(</span><span class="token punctuation">)</span>
+rospy<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+  
+<span class="token comment"># 控制机械臂终端反向旋转90度</span>
+arm<span class="token punctuation">.</span>shift_pose_target<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1.57</span><span class="token punctuation">,</span> end_effector_link<span class="token punctuation">)</span>
+arm<span class="token punctuation">.</span>go<span class="token punctuation">(</span><span class="token punctuation">)</span>
+rospy<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="_1-3笛卡尔运动规划"><a href="#_1-3笛卡尔运动规划" class="header-anchor">#</a> 1.3笛卡尔运动规划</h3> <p>工作空间中的运动规划没有对机器人终端轨迹有任何约束，目标位姿给定值后，可以通过运动学反解获得关节空间下的各轴弧度，接下来的运动规划和运动依然在关节空间中完成</p> <p>但是在实际场景中，不仅仅是关心机械臂的起终，对运动过程中的位姿也有一定的要求，比如希望机器人终端能够走出去一条直线或者是圆弧轨迹</p> <p>MoveIt!也提供了笛卡尔运动规划的接口，使用如下命令：</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ roslaunch marm_planning arm_planning_with_trail.launch
+$ rosrun marm_planning moveit_cartesian_demo.py _cartesian:<span class="token operator">=</span>True
+</code></pre></div><h4 id="_1-3-1源码"><a href="#_1-3-1源码" class="header-anchor">#</a> 1.3.1源码</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#!/usr/bin/env python</span>
+<span class="token comment"># -*- coding: utf-8 -*-</span>
+
+<span class="token keyword">import</span> rospy<span class="token punctuation">,</span> sys
+<span class="token keyword">import</span> moveit_commander
+<span class="token keyword">from</span> moveit_commander <span class="token keyword">import</span> MoveGroupCommander
+<span class="token keyword">from</span> geometry_msgs<span class="token punctuation">.</span>msg <span class="token keyword">import</span> Pose
+<span class="token keyword">from</span> copy <span class="token keyword">import</span> deepcopy
+
+<span class="token keyword">class</span> <span class="token class-name">MoveItCartesianDemo</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 初始化move_group的API</span>
+        moveit_commander<span class="token punctuation">.</span>roscpp_initialize<span class="token punctuation">(</span>sys<span class="token punctuation">.</span>argv<span class="token punctuation">)</span>
+
+        <span class="token comment"># 初始化ROS节点</span>
+        rospy<span class="token punctuation">.</span>init_node<span class="token punctuation">(</span><span class="token string">'moveit_cartesian_demo'</span><span class="token punctuation">,</span> anonymous<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 是否需要使用笛卡尔空间的运动规划</span>
+        cartesian <span class="token operator">=</span> rospy<span class="token punctuation">.</span>get_param<span class="token punctuation">(</span><span class="token string">'~cartesian'</span><span class="token punctuation">,</span> <span class="token boolean">True</span><span class="token punctuation">)</span>
+                        
+        <span class="token comment"># 初始化需要使用move group控制的机械臂中的arm group</span>
+        arm <span class="token operator">=</span> MoveGroupCommander<span class="token punctuation">(</span><span class="token string">'arm'</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 当运动规划失败后，允许重新规划</span>
+        arm<span class="token punctuation">.</span>allow_replanning<span class="token punctuation">(</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 设置目标位置所使用的参考坐标系</span>
+        arm<span class="token punctuation">.</span>set_pose_reference_frame<span class="token punctuation">(</span><span class="token string">'base_link'</span><span class="token punctuation">)</span>
+                
+        <span class="token comment"># 设置位置(单位：米)和姿态（单位：弧度）的允许误差</span>
+        arm<span class="token punctuation">.</span>set_goal_position_tolerance<span class="token punctuation">(</span><span class="token number">0.01</span><span class="token punctuation">)</span>
+        arm<span class="token punctuation">.</span>set_goal_orientation_tolerance<span class="token punctuation">(</span><span class="token number">0.1</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 获取终端link的名称</span>
+        end_effector_link <span class="token operator">=</span> arm<span class="token punctuation">.</span>get_end_effector_link<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                                        
+        <span class="token comment"># 控制机械臂运动到之前设置的“forward”姿态</span>
+        arm<span class="token punctuation">.</span>set_named_target<span class="token punctuation">(</span><span class="token string">'forward'</span><span class="token punctuation">)</span>
+        arm<span class="token punctuation">.</span>go<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 获取当前位姿数据最为机械臂运动的起始位姿</span>
+        start_pose <span class="token operator">=</span> arm<span class="token punctuation">.</span>get_current_pose<span class="token punctuation">(</span>end_effector_link<span class="token punctuation">)</span><span class="token punctuation">.</span>pose
+                
+        <span class="token comment"># 初始化路点列表</span>
+        waypoints <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+                
+        <span class="token comment"># 将初始位姿加入路点列表</span>
+        <span class="token keyword">if</span> cartesian<span class="token punctuation">:</span>
+            waypoints<span class="token punctuation">.</span>append<span class="token punctuation">(</span>start_pose<span class="token punctuation">)</span>
+            
+        <span class="token comment"># 设置第二个路点数据，并加入路点列表</span>
+        <span class="token comment"># 第二个路点需要向后运动0.2米，向右运动0.2米</span>
+        wpose <span class="token operator">=</span> deepcopy<span class="token punctuation">(</span>start_pose<span class="token punctuation">)</span>
+        wpose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x <span class="token operator">-=</span> <span class="token number">0.2</span>
+        wpose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y <span class="token operator">-=</span> <span class="token number">0.2</span>
+
+        <span class="token keyword">if</span> cartesian<span class="token punctuation">:</span>
+            waypoints<span class="token punctuation">.</span>append<span class="token punctuation">(</span>deepcopy<span class="token punctuation">(</span>wpose<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            arm<span class="token punctuation">.</span>set_pose_target<span class="token punctuation">(</span>wpose<span class="token punctuation">)</span>
+            arm<span class="token punctuation">.</span>go<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            rospy<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+         
+        <span class="token comment"># 设置第三个路点数据，并加入路点列表</span>
+        wpose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x <span class="token operator">+=</span> <span class="token number">0.05</span>
+        wpose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y <span class="token operator">+=</span> <span class="token number">0.15</span>
+        wpose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z <span class="token operator">-=</span> <span class="token number">0.15</span>
+          
+        <span class="token keyword">if</span> cartesian<span class="token punctuation">:</span>
+            waypoints<span class="token punctuation">.</span>append<span class="token punctuation">(</span>deepcopy<span class="token punctuation">(</span>wpose<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            arm<span class="token punctuation">.</span>set_pose_target<span class="token punctuation">(</span>wpose<span class="token punctuation">)</span>
+            arm<span class="token punctuation">.</span>go<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            rospy<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 设置第四个路点数据，回到初始位置，并加入路点列表</span>
+        <span class="token keyword">if</span> cartesian<span class="token punctuation">:</span>
+            waypoints<span class="token punctuation">.</span>append<span class="token punctuation">(</span>deepcopy<span class="token punctuation">(</span>start_pose<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            arm<span class="token punctuation">.</span>set_pose_target<span class="token punctuation">(</span>start_pose<span class="token punctuation">)</span>
+            arm<span class="token punctuation">.</span>go<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            rospy<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+            
+        <span class="token keyword">if</span> cartesian<span class="token punctuation">:</span>
+            fraction <span class="token operator">=</span> <span class="token number">0.0</span>   <span class="token comment">#路径规划覆盖率</span>
+            maxtries <span class="token operator">=</span> <span class="token number">100</span>   <span class="token comment">#最大尝试规划次数</span>
+            attempts <span class="token operator">=</span> <span class="token number">0</span>     <span class="token comment">#已经尝试规划次数</span>
+            
+            <span class="token comment"># 设置机器臂当前的状态作为运动初始状态</span>
+            arm<span class="token punctuation">.</span>set_start_state_to_current_state<span class="token punctuation">(</span><span class="token punctuation">)</span>
+     
+            <span class="token comment"># 尝试规划一条笛卡尔空间下的路径，依次通过所有路点</span>
+            <span class="token keyword">while</span> fraction <span class="token operator">&lt;</span> <span class="token number">1.0</span> <span class="token keyword">and</span> attempts <span class="token operator">&lt;</span> maxtries<span class="token punctuation">:</span>
+                <span class="token punctuation">(</span>plan<span class="token punctuation">,</span> fraction<span class="token punctuation">)</span> <span class="token operator">=</span> arm<span class="token punctuation">.</span>compute_cartesian_path <span class="token punctuation">(</span>
+                                        waypoints<span class="token punctuation">,</span>   <span class="token comment"># waypoint poses，路点列表</span>
+                                        <span class="token number">0.01</span><span class="token punctuation">,</span>        <span class="token comment"># eef_step，终端步进值</span>
+                                        <span class="token number">0.0</span><span class="token punctuation">,</span>         <span class="token comment"># jump_threshold，跳跃阈值</span>
+                                        <span class="token boolean">True</span><span class="token punctuation">)</span>        <span class="token comment"># avoid_collisions，避障规划</span>
+                
+                <span class="token comment"># 尝试次数累加</span>
+                attempts <span class="token operator">+=</span> <span class="token number">1</span>
+                
+                <span class="token comment"># 打印运动规划进程</span>
+                <span class="token keyword">if</span> attempts <span class="token operator">%</span> <span class="token number">10</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+                    rospy<span class="token punctuation">.</span>loginfo<span class="token punctuation">(</span><span class="token string">&quot;Still trying after &quot;</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>attempts<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot; attempts...&quot;</span><span class="token punctuation">)</span>
+                         
+            <span class="token comment"># 如果路径规划成功（覆盖率100%）,则开始控制机械臂运动</span>
+            <span class="token keyword">if</span> fraction <span class="token operator">==</span> <span class="token number">1.0</span><span class="token punctuation">:</span>
+                rospy<span class="token punctuation">.</span>loginfo<span class="token punctuation">(</span><span class="token string">&quot;Path computed successfully. Moving the arm.&quot;</span><span class="token punctuation">)</span>
+                arm<span class="token punctuation">.</span>execute<span class="token punctuation">(</span>plan<span class="token punctuation">)</span>
+                rospy<span class="token punctuation">.</span>loginfo<span class="token punctuation">(</span><span class="token string">&quot;Path execution complete.&quot;</span><span class="token punctuation">)</span>
+            <span class="token comment"># 如果路径规划失败，则打印失败信息</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                rospy<span class="token punctuation">.</span>loginfo<span class="token punctuation">(</span><span class="token string">&quot;Path planning failed with only &quot;</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>fraction<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot; success after &quot;</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>maxtries<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot; attempts.&quot;</span><span class="token punctuation">)</span>  
+
+        <span class="token comment"># 控制机械臂回到初始化位置</span>
+        arm<span class="token punctuation">.</span>set_named_target<span class="token punctuation">(</span><span class="token string">'home'</span><span class="token punctuation">)</span>
+        arm<span class="token punctuation">.</span>go<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        rospy<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 关闭并退出moveit</span>
+        moveit_commander<span class="token punctuation">.</span>roscpp_shutdown<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        moveit_commander<span class="token punctuation">.</span>os<span class="token punctuation">.</span>_exit<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">&quot;__main__&quot;</span><span class="token punctuation">:</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        MoveItCartesianDemo<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span> rospy<span class="token punctuation">.</span>ROSInterruptException<span class="token punctuation">:</span>
+        <span class="token keyword">pass</span>
+</code></pre></div><h4 id="_1-3-2代码分析"><a href="#_1-3-2代码分析" class="header-anchor">#</a> 1.3.2代码分析</h4> <ul><li>waypoint表示的是路点，笛卡尔路径中需要经过的每一个位姿点，相邻两个路点之间使用直线轨迹运动，需要将运动中需要经过的路点都加入路点列表中</li></ul> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 初始化路点列表</span>
+waypoints <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+                
+<span class="token comment"># 将初始位姿加入路点列表</span>
+<span class="token keyword">if</span> cartesian<span class="token punctuation">:</span>
+    waypoints<span class="token punctuation">.</span>append<span class="token punctuation">(</span>start_pose<span class="token punctuation">)</span>
+</code></pre></div><ul><li>整个历程的核心部分，使用了笛卡尔路径规划的API</li></ul> <div class="language-python extra-class"><pre class="language-python"><code>            <span class="token comment"># 尝试规划一条笛卡尔空间下的路径，依次通过所有路点</span>
+            <span class="token keyword">while</span> fraction <span class="token operator">&lt;</span> <span class="token number">1.0</span> <span class="token keyword">and</span> attempts <span class="token operator">&lt;</span> maxtries<span class="token punctuation">:</span>
+                <span class="token punctuation">(</span>plan<span class="token punctuation">,</span> fraction<span class="token punctuation">)</span> <span class="token operator">=</span> arm<span class="token punctuation">.</span>compute_cartesian_path <span class="token punctuation">(</span>
+                                        waypoints<span class="token punctuation">,</span>   <span class="token comment"># waypoint poses，路点列表</span>
+                                        <span class="token number">0.01</span><span class="token punctuation">,</span>        <span class="token comment"># eef_step，终端步进值</span>
+                                        <span class="token number">0.0</span><span class="token punctuation">,</span>         <span class="token comment"># jump_threshold，跳跃阈值</span>
+                                        <span class="token boolean">True</span><span class="token punctuation">)</span>        <span class="token comment"># avoid_collisions，避障规划</span>
+                
+                <span class="token comment"># 尝试次数累加</span>
+                attempts <span class="token operator">+=</span> <span class="token number">1</span>
+                
+                <span class="token comment"># 打印运动规划进程</span>
+                <span class="token keyword">if</span> attempts <span class="token operator">%</span> <span class="token number">10</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+                    rospy<span class="token punctuation">.</span>loginfo<span class="token punctuation">(</span><span class="token string">&quot;Still trying after &quot;</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>attempts<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot; attempts...&quot;</span><span class="token punctuation">)</span>
+</code></pre></div><p>其总共有四个参数：第一个参数是之前创建的路点列表；第二个参数是终端步进值；第三个参数是跳跃阀值；第四个参数是用于设置运动过程中是否考虑避障</p> <p><code>compute_cartesian_path()</code>执行后会返回两个值：plan是规划出来的运动轨迹；fraction用于描述规划成功的轨迹在给定路点列表中的覆盖值，从0到1</p> <p>如果fraction小于1，说明给定的路点列表没有办法完整规划，这种情况下可以重新进行规划，但是需要人为设置规划次数</p> <ul><li>如果规划成功，fraction的值为1，此时就可以实现<code>execute()</code>控制机器人执行规划成功的路径轨迹</li></ul> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 如果路径规划成功（覆盖率100%）,则开始控制机械臂运动</span>
+<span class="token keyword">if</span> fraction <span class="token operator">==</span> <span class="token number">1.0</span><span class="token punctuation">:</span>
+    rospy<span class="token punctuation">.</span>loginfo<span class="token punctuation">(</span><span class="token string">&quot;Path computed successfully. Moving the arm.&quot;</span><span class="token punctuation">)</span>
+    arm<span class="token punctuation">.</span>execute<span class="token punctuation">(</span>plan<span class="token punctuation">)</span>
+    rospy<span class="token punctuation">.</span>loginfo<span class="token punctuation">(</span><span class="token string">&quot;Path execution complete.&quot;</span><span class="token punctuation">)</span>
+    <span class="token comment"># 如果路径规划失败，则打印失败信息</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        rospy<span class="token punctuation">.</span>loginfo<span class="token punctuation">(</span><span class="token string">&quot;Path planning failed with only &quot;</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>fraction<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot; success after &quot;</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>maxtries<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot; attempts.&quot;</span><span class="token punctuation">)</span>  
+</code></pre></div><h3 id="_1-4避障规划"><a href="#_1-4避障规划" class="header-anchor">#</a> 1.4避障规划</h3> <p>在很多应用场景下机器人工作环境中会有一些周围物体，这些物体可能在机器人工作空间内称为机器人运动规划过程中的障碍物，所以运动规划需要考虑避障问题</p> <p>运行以下命令，启动避障规划</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ roslaunch marm_planning arm_planning.launch
+$ rosrun marm_planning moveit_obstacles_demo.py
+</code></pre></div><img src="https://i.loli.net/2021/08/23/Tf3PtyhD74CVUbY.png" alt="2021-08-23 11-27-11 的屏幕截图.png" style="zoom:80%;"> <h4 id="_1-4-1源码"><a href="#_1-4-1源码" class="header-anchor">#</a> 1.4.1源码</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#!/usr/bin/env python</span>
+<span class="token comment"># -*- coding: utf-8 -*-</span>
+
+<span class="token keyword">import</span> rospy<span class="token punctuation">,</span> sys
+<span class="token keyword">import</span> moveit_commander
+<span class="token keyword">from</span> moveit_commander <span class="token keyword">import</span> MoveGroupCommander<span class="token punctuation">,</span> PlanningSceneInterface
+<span class="token keyword">from</span> moveit_msgs<span class="token punctuation">.</span>msg <span class="token keyword">import</span>  PlanningScene<span class="token punctuation">,</span> ObjectColor
+<span class="token keyword">from</span> geometry_msgs<span class="token punctuation">.</span>msg <span class="token keyword">import</span> PoseStamped<span class="token punctuation">,</span> Pose
+
+<span class="token keyword">class</span> <span class="token class-name">MoveItObstaclesDemo</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 初始化move_group的API</span>
+        moveit_commander<span class="token punctuation">.</span>roscpp_initialize<span class="token punctuation">(</span>sys<span class="token punctuation">.</span>argv<span class="token punctuation">)</span>
+        
+        <span class="token comment"># 初始化ROS节点</span>
+        rospy<span class="token punctuation">.</span>init_node<span class="token punctuation">(</span><span class="token string">'moveit_obstacles_demo'</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 初始化场景对象</span>
+        scene <span class="token operator">=</span> PlanningSceneInterface<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 创建一个发布场景变化信息的发布者</span>
+        self<span class="token punctuation">.</span>scene_pub <span class="token operator">=</span> rospy<span class="token punctuation">.</span>Publisher<span class="token punctuation">(</span><span class="token string">'planning_scene'</span><span class="token punctuation">,</span> PlanningScene<span class="token punctuation">,</span> queue_size<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 创建一个存储物体颜色的字典对象</span>
+        self<span class="token punctuation">.</span>colors <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 等待场景准备就绪</span>
+        rospy<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+                        
+        <span class="token comment"># 初始化需要使用move group控制的机械臂中的arm group</span>
+        arm <span class="token operator">=</span> MoveGroupCommander<span class="token punctuation">(</span><span class="token string">'arm'</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 获取终端link的名称</span>
+        end_effector_link <span class="token operator">=</span> arm<span class="token punctuation">.</span>get_end_effector_link<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 设置位置(单位：米)和姿态（单位：弧度）的允许误差</span>
+        arm<span class="token punctuation">.</span>set_goal_position_tolerance<span class="token punctuation">(</span><span class="token number">0.01</span><span class="token punctuation">)</span>
+        arm<span class="token punctuation">.</span>set_goal_orientation_tolerance<span class="token punctuation">(</span><span class="token number">0.05</span><span class="token punctuation">)</span>
+       
+        <span class="token comment"># 当运动规划失败后，允许重新规划</span>
+        arm<span class="token punctuation">.</span>allow_replanning<span class="token punctuation">(</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 设置目标位置所使用的参考坐标系</span>
+        reference_frame <span class="token operator">=</span> <span class="token string">'base_link'</span>
+        arm<span class="token punctuation">.</span>set_pose_reference_frame<span class="token punctuation">(</span>reference_frame<span class="token punctuation">)</span>
+        
+        <span class="token comment"># 设置每次运动规划的时间限制：5s</span>
+        arm<span class="token punctuation">.</span>set_planning_time<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 设置场景物体的名称</span>
+        table_id <span class="token operator">=</span> <span class="token string">'table'</span>
+        box1_id <span class="token operator">=</span> <span class="token string">'box1'</span>
+        box2_id <span class="token operator">=</span> <span class="token string">'box2'</span>
+        
+        <span class="token comment"># 移除场景中之前运行残留的物体</span>
+        scene<span class="token punctuation">.</span>remove_world_object<span class="token punctuation">(</span>table_id<span class="token punctuation">)</span>
+        scene<span class="token punctuation">.</span>remove_world_object<span class="token punctuation">(</span>box1_id<span class="token punctuation">)</span>
+        scene<span class="token punctuation">.</span>remove_world_object<span class="token punctuation">(</span>box2_id<span class="token punctuation">)</span>    
+        rospy<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 控制机械臂先回到初始化位置</span>
+        arm<span class="token punctuation">.</span>set_named_target<span class="token punctuation">(</span><span class="token string">'home'</span><span class="token punctuation">)</span>
+        arm<span class="token punctuation">.</span>go<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        rospy<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 设置桌面的高度</span>
+        table_ground <span class="token operator">=</span> <span class="token number">0.25</span>
+        
+        <span class="token comment"># 设置table、box1和box2的三维尺寸</span>
+        table_size <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0.2</span><span class="token punctuation">,</span> <span class="token number">0.7</span><span class="token punctuation">,</span> <span class="token number">0.01</span><span class="token punctuation">]</span>
+        box1_size <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0.1</span><span class="token punctuation">,</span> <span class="token number">0.05</span><span class="token punctuation">,</span> <span class="token number">0.05</span><span class="token punctuation">]</span>
+        box2_size <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0.05</span><span class="token punctuation">,</span> <span class="token number">0.05</span><span class="token punctuation">,</span> <span class="token number">0.15</span><span class="token punctuation">]</span>
+        
+        <span class="token comment"># 将三个物体加入场景当中</span>
+        table_pose <span class="token operator">=</span> PoseStamped<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        table_pose<span class="token punctuation">.</span>header<span class="token punctuation">.</span>frame_id <span class="token operator">=</span> reference_frame
+        table_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">0.26</span>
+        table_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token number">0.0</span>
+        table_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z <span class="token operator">=</span> table_ground <span class="token operator">+</span> table_size<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">/</span> <span class="token number">2.0</span>
+        table_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation<span class="token punctuation">.</span>w <span class="token operator">=</span> <span class="token number">1.0</span>
+        scene<span class="token punctuation">.</span>add_box<span class="token punctuation">(</span>table_id<span class="token punctuation">,</span> table_pose<span class="token punctuation">,</span> table_size<span class="token punctuation">)</span>
+        
+        box1_pose <span class="token operator">=</span> PoseStamped<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        box1_pose<span class="token punctuation">.</span>header<span class="token punctuation">.</span>frame_id <span class="token operator">=</span> reference_frame
+        box1_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">0.21</span>
+        box1_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">0.1</span>
+        box1_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z <span class="token operator">=</span> table_ground <span class="token operator">+</span> table_size<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">+</span> box1_size<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">/</span> <span class="token number">2.0</span>
+        box1_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation<span class="token punctuation">.</span>w <span class="token operator">=</span> <span class="token number">1.0</span>   
+        scene<span class="token punctuation">.</span>add_box<span class="token punctuation">(</span>box1_id<span class="token punctuation">,</span> box1_pose<span class="token punctuation">,</span> box1_size<span class="token punctuation">)</span>
+        
+        box2_pose <span class="token operator">=</span> PoseStamped<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        box2_pose<span class="token punctuation">.</span>header<span class="token punctuation">.</span>frame_id <span class="token operator">=</span> reference_frame
+        box2_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">0.19</span>
+        box2_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token number">0.15</span>
+        box2_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z <span class="token operator">=</span> table_ground <span class="token operator">+</span> table_size<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">+</span> box2_size<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">/</span> <span class="token number">2.0</span>
+        box2_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation<span class="token punctuation">.</span>w <span class="token operator">=</span> <span class="token number">1.0</span>   
+        scene<span class="token punctuation">.</span>add_box<span class="token punctuation">(</span>box2_id<span class="token punctuation">,</span> box2_pose<span class="token punctuation">,</span> box2_size<span class="token punctuation">)</span>
+        
+        <span class="token comment"># 将桌子设置成红色，两个box设置成橙色</span>
+        self<span class="token punctuation">.</span>setColor<span class="token punctuation">(</span>table_id<span class="token punctuation">,</span> <span class="token number">0.8</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>setColor<span class="token punctuation">(</span>box1_id<span class="token punctuation">,</span> <span class="token number">0.8</span><span class="token punctuation">,</span> <span class="token number">0.4</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>setColor<span class="token punctuation">(</span>box2_id<span class="token punctuation">,</span> <span class="token number">0.8</span><span class="token punctuation">,</span> <span class="token number">0.4</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 将场景中的颜色设置发布</span>
+        self<span class="token punctuation">.</span>sendColors<span class="token punctuation">(</span><span class="token punctuation">)</span>    
+        
+        <span class="token comment"># 设置机械臂的运动目标位置，位于桌面之上两个盒子之间</span>
+        target_pose <span class="token operator">=</span> PoseStamped<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        target_pose<span class="token punctuation">.</span>header<span class="token punctuation">.</span>frame_id <span class="token operator">=</span> reference_frame
+        target_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">0.2</span>
+        target_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token number">0.0</span>
+        target_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z <span class="token operator">=</span> table_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z <span class="token operator">+</span> table_size<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">0.05</span>
+        target_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation<span class="token punctuation">.</span>w <span class="token operator">=</span> <span class="token number">1.0</span>
+        
+        <span class="token comment"># 控制机械臂运动到目标位置</span>
+        arm<span class="token punctuation">.</span>set_pose_target<span class="token punctuation">(</span>target_pose<span class="token punctuation">,</span> end_effector_link<span class="token punctuation">)</span>
+        arm<span class="token punctuation">.</span>go<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        rospy<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+        <span class="token comment"># 设置机械臂的运动目标位置，进行避障规划</span>
+        target_pose2 <span class="token operator">=</span> PoseStamped<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        target_pose2<span class="token punctuation">.</span>header<span class="token punctuation">.</span>frame_id <span class="token operator">=</span> reference_frame
+        target_pose2<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">0.2</span>
+        target_pose2<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">0.25</span>
+        target_pose2<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z <span class="token operator">=</span> table_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z <span class="token operator">+</span> table_size<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">0.05</span>
+        target_pose2<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation<span class="token punctuation">.</span>w <span class="token operator">=</span> <span class="token number">1.0</span>
+        
+        <span class="token comment"># 控制机械臂运动到目标位置</span>
+        arm<span class="token punctuation">.</span>set_pose_target<span class="token punctuation">(</span>target_pose2<span class="token punctuation">,</span> end_effector_link<span class="token punctuation">)</span>
+        arm<span class="token punctuation">.</span>go<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        rospy<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 控制机械臂回到初始化位置</span>
+        arm<span class="token punctuation">.</span>set_named_target<span class="token punctuation">(</span><span class="token string">'home'</span><span class="token punctuation">)</span>
+        arm<span class="token punctuation">.</span>go<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 关闭并退出moveit</span>
+        moveit_commander<span class="token punctuation">.</span>roscpp_shutdown<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        moveit_commander<span class="token punctuation">.</span>os<span class="token punctuation">.</span>_exit<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+        
+    <span class="token comment"># 设置场景物体的颜色</span>
+    <span class="token keyword">def</span> <span class="token function">setColor</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">,</span> r<span class="token punctuation">,</span> g<span class="token punctuation">,</span> b<span class="token punctuation">,</span> a <span class="token operator">=</span> <span class="token number">0.9</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 初始化moveit颜色对象</span>
+        color <span class="token operator">=</span> ObjectColor<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 设置颜色值</span>
+        color<span class="token punctuation">.</span><span class="token builtin">id</span> <span class="token operator">=</span> name
+        color<span class="token punctuation">.</span>color<span class="token punctuation">.</span>r <span class="token operator">=</span> r
+        color<span class="token punctuation">.</span>color<span class="token punctuation">.</span>g <span class="token operator">=</span> g
+        color<span class="token punctuation">.</span>color<span class="token punctuation">.</span>b <span class="token operator">=</span> b
+        color<span class="token punctuation">.</span>color<span class="token punctuation">.</span>a <span class="token operator">=</span> a
+        
+        <span class="token comment"># 更新颜色字典</span>
+        self<span class="token punctuation">.</span>colors<span class="token punctuation">[</span>name<span class="token punctuation">]</span> <span class="token operator">=</span> color
+
+    <span class="token comment"># 将颜色设置发送并应用到moveit场景当中</span>
+    <span class="token keyword">def</span> <span class="token function">sendColors</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 初始化规划场景对象</span>
+        p <span class="token operator">=</span> PlanningScene<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token comment"># 需要设置规划场景是否有差异     </span>
+        p<span class="token punctuation">.</span>is_diff <span class="token operator">=</span> <span class="token boolean">True</span>
+        
+        <span class="token comment"># 从颜色字典中取出颜色设置</span>
+        <span class="token keyword">for</span> color <span class="token keyword">in</span> self<span class="token punctuation">.</span>colors<span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            p<span class="token punctuation">.</span>object_colors<span class="token punctuation">.</span>append<span class="token punctuation">(</span>color<span class="token punctuation">)</span>
+        
+        <span class="token comment"># 发布场景物体颜色设置</span>
+        self<span class="token punctuation">.</span>scene_pub<span class="token punctuation">.</span>publish<span class="token punctuation">(</span>p<span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">&quot;__main__&quot;</span><span class="token punctuation">:</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        MoveItObstaclesDemo<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span> KeyboardInterrupt<span class="token punctuation">:</span>
+        <span class="token keyword">raise</span>
+</code></pre></div><h4 id="_1-4-2源码分析"><a href="#_1-4-2源码分析" class="header-anchor">#</a> 1.4.2源码分析</h4> <blockquote><p>该历程的主要流程是：</p> <ul><li>初始化场景，设置参数</li> <li>在可视化环境中加入障碍物模型</li> <li>设置机器人的起始位姿和目标位姿</li> <li>进行避障规划</li></ul></blockquote> <ul><li>使用<code>PlanningSceneInterface</code>接口提供的添加、删除物体模型的功能，使用<code>ObjectColor</code>消息来设置物体的颜色，<code>PlanningScene</code>消息更新话题<code>planning_scene</code>订阅的消息类型</li></ul> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> moveit_commander <span class="token keyword">import</span> MoveGroupCommander<span class="token punctuation">,</span> PlanningSceneInterface
+<span class="token keyword">from</span> moveit_msgs<span class="token punctuation">.</span>msg <span class="token keyword">import</span>  PlanningScene<span class="token punctuation">,</span> ObjectColor
+</code></pre></div><ul><li>创建PlanningSceneInterface类示例，通过这个实例可以添加或删除物体模型</li></ul> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 初始化场景对象</span>
+scene <span class="token operator">=</span> PlanningSceneInterface<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><ul><li>创建一个planning_scene话题发布者，用来更新物体的颜色等信息</li></ul> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 创建一个发布场景变化信息的发布者</span>
+self<span class="token punctuation">.</span>scene_pub <span class="token operator">=</span> rospy<span class="token punctuation">.</span>Publisher<span class="token punctuation">(</span><span class="token string">'planning_scene'</span><span class="token punctuation">,</span> PlanningScene<span class="token punctuation">,</span> queue_size<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span>
+</code></pre></div><ul><li>物体模型在环境中需要有唯一的ID，该历程中包括三个物体：</li></ul> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 设置场景物体的名称</span>
+table_id <span class="token operator">=</span> <span class="token string">'table'</span>
+box1_id <span class="token operator">=</span> <span class="token string">'box1'</span>
+box2_id <span class="token operator">=</span> <span class="token string">'box2'</span>
+</code></pre></div><ul><li>该历程可以在终端重复运行，但是之前加载的物体模型不会自动清除，需要使用<code>remove_world_object()</code>方法进行清除</li></ul> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 移除场景中之前运行残留的物体</span>
+scene<span class="token punctuation">.</span>remove_world_object<span class="token punctuation">(</span>table_id<span class="token punctuation">)</span>
+scene<span class="token punctuation">.</span>remove_world_object<span class="token punctuation">(</span>box1_id<span class="token punctuation">)</span>
+scene<span class="token punctuation">.</span>remove_world_object<span class="token punctuation">(</span>box2_id<span class="token punctuation">)</span>    
+rospy<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+</code></pre></div><ul><li>设置物体模型尺寸</li></ul> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 设置table、box1和box2的三维尺寸</span>
+table_size <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0.2</span><span class="token punctuation">,</span> <span class="token number">0.7</span><span class="token punctuation">,</span> <span class="token number">0.01</span><span class="token punctuation">]</span>
+box1_size <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0.1</span><span class="token punctuation">,</span> <span class="token number">0.05</span><span class="token punctuation">,</span> <span class="token number">0.05</span><span class="token punctuation">]</span>
+box2_size <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0.05</span><span class="token punctuation">,</span> <span class="token number">0.05</span><span class="token punctuation">,</span> <span class="token number">0.15</span><span class="token punctuation">]</span>
+</code></pre></div><ul><li>使用<code>PoseStamped</code>消息描述确定物体位置，并使用<code>PlanningSceneInterface</code>的<code>add_box()</code>接口添加到场景中</li></ul> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 将三个物体加入场景当中</span>
+table_pose <span class="token operator">=</span> PoseStamped<span class="token punctuation">(</span><span class="token punctuation">)</span>
+table_pose<span class="token punctuation">.</span>header<span class="token punctuation">.</span>frame_id <span class="token operator">=</span> reference_frame
+table_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">0.26</span>
+table_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token number">0.0</span>
+table_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z <span class="token operator">=</span> table_ground <span class="token operator">+</span> table_size<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">/</span> <span class="token number">2.0</span>
+table_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation<span class="token punctuation">.</span>w <span class="token operator">=</span> <span class="token number">1.0</span>
+scene<span class="token punctuation">.</span>add_box<span class="token punctuation">(</span>table_id<span class="token punctuation">,</span> table_pose<span class="token punctuation">,</span> table_size<span class="token punctuation">)</span>
+</code></pre></div><ul><li>设置颜色</li></ul> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 将桌子设置成红色，两个box设置成橙色</span>
+self<span class="token punctuation">.</span>setColor<span class="token punctuation">(</span>table_id<span class="token punctuation">,</span> <span class="token number">0.8</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span>
+self<span class="token punctuation">.</span>setColor<span class="token punctuation">(</span>box1_id<span class="token punctuation">,</span> <span class="token number">0.8</span><span class="token punctuation">,</span> <span class="token number">0.4</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span>
+self<span class="token punctuation">.</span>setColor<span class="token punctuation">(</span>box2_id<span class="token punctuation">,</span> <span class="token number">0.8</span><span class="token punctuation">,</span> <span class="token number">0.4</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span>
+</code></pre></div><ul><li><code>setColor()</code>通过输入的RGBA值创建一条<code>ObjectColor</code>类型的消息，并保存到颜色变量列表中</li></ul> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 设置场景物体的颜色</span>
+<span class="token keyword">def</span> <span class="token function">setColor</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">,</span> r<span class="token punctuation">,</span> g<span class="token punctuation">,</span> b<span class="token punctuation">,</span> a <span class="token operator">=</span> <span class="token number">0.9</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 初始化moveit颜色对象</span>
+    color <span class="token operator">=</span> ObjectColor<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+    <span class="token comment"># 设置颜色值</span>
+    color<span class="token punctuation">.</span><span class="token builtin">id</span> <span class="token operator">=</span> name
+    color<span class="token punctuation">.</span>color<span class="token punctuation">.</span>r <span class="token operator">=</span> r
+    color<span class="token punctuation">.</span>color<span class="token punctuation">.</span>g <span class="token operator">=</span> g
+    color<span class="token punctuation">.</span>color<span class="token punctuation">.</span>b <span class="token operator">=</span> b
+    color<span class="token punctuation">.</span>color<span class="token punctuation">.</span>a <span class="token operator">=</span> a
+    
+    <span class="token comment"># 更新颜色字典</span>
+    self<span class="token punctuation">.</span>colors<span class="token punctuation">[</span>name<span class="token punctuation">]</span> <span class="token operator">=</span> color
+</code></pre></div><ul><li><code>sendColors()</code>取出颜色列表中的颜色，通过创建的PlanningScene消息，将场景的更新信息发布</li></ul> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 将颜色设置发送并应用到moveit场景当中</span>
+<span class="token keyword">def</span> <span class="token function">sendColors</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 初始化规划场景对象</span>
+    p <span class="token operator">=</span> PlanningScene<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># 需要设置规划场景是否有差异     </span>
+    p<span class="token punctuation">.</span>is_diff <span class="token operator">=</span> <span class="token boolean">True</span>
+    
+    <span class="token comment"># 从颜色字典中取出颜色设置</span>
+    <span class="token keyword">for</span> color <span class="token keyword">in</span> self<span class="token punctuation">.</span>colors<span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        p<span class="token punctuation">.</span>object_colors<span class="token punctuation">.</span>append<span class="token punctuation">(</span>color<span class="token punctuation">)</span>
+        
+    <span class="token comment"># 发布场景物体颜色设置</span>
+    self<span class="token punctuation">.</span>scene_pub<span class="token punctuation">.</span>publish<span class="token punctuation">(</span>p<span class="token punctuation">)</span>
+</code></pre></div><ul><li>将机械臂放置到两个物体之间</li></ul> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 设置机械臂的运动目标位置，位于桌面之上两个盒子之间</span>
+target_pose <span class="token operator">=</span> PoseStamped<span class="token punctuation">(</span><span class="token punctuation">)</span>
+target_pose<span class="token punctuation">.</span>header<span class="token punctuation">.</span>frame_id <span class="token operator">=</span> reference_frame       tar
+target_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token number">0.0</span>
+target_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z <span class="token operator">=</span> table_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z <span class="token operator">+</span> table_size<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">0.05</span>
+target_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation<span class="token punctuation">.</span>w <span class="token operator">=</span> <span class="token number">1.0</span>
+</code></pre></div><ul><li>设置目标位姿在障碍物外边</li></ul> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 设置机械臂的运动目标位置，进行避障规划</span>
+target_pose2 <span class="token operator">=</span> PoseStamped<span class="token punctuation">(</span><span class="token punctuation">)</span>
+target_pose2<span class="token punctuation">.</span>header<span class="token punctuation">.</span>frame_id <span class="token operator">=</span> reference_frame
+target_pose2<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">0.2</span>
+target_pose2<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">0.25</span>
+target_pose2<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z <span class="token operator">=</span> table_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z <span class="token operator">+</span> table_size<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">0.05</span>
+target_pose2<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation<span class="token punctuation">.</span>w <span class="token operator">=</span> <span class="token number">1.0</span>
+</code></pre></div><h2 id="二、pick-and-place实例"><a href="#二、pick-and-place实例" class="header-anchor">#</a> 二、pick and place实例</h2> <p>目的：让机器人用夹爪将工作空间中的某一个物体夹起来，然后将该物体放到目标位置上</p> <h3 id="_2-1应用效果"><a href="#_2-1应用效果" class="header-anchor">#</a> 2.1应用效果</h3> <div class="language-shell extra-class"><pre class="language-shell"><code>$ roslaunch marm_planning arm_planning.launch
+$ rosrun marm_planning moveit_pick_and_place_demo.py
+</code></pre></div><p>效果如下所示：</p> <img src="https://i.loli.net/2021/08/23/y5kvhJXHpGN8MOE.png" alt="2021-08-23 12-13-21 的屏幕截图.png" style="zoom:80%;"> <img src="https://i.loli.net/2021/08/23/uAtK8pXLeWj5mfF.png" alt="2021-08-23 12-13-28 的屏幕截图.png" style="zoom:80%;"> <h3 id="_2-2抓取物体"><a href="#_2-2抓取物体" class="header-anchor">#</a> 2.2抓取物体</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 设置目标物体的尺寸</span>
+target_size <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0.02</span><span class="token punctuation">,</span> <span class="token number">0.01</span><span class="token punctuation">,</span> <span class="token number">0.12</span><span class="token punctuation">]</span>
+
+<span class="token comment"># 设置目标物体的位置，位于桌面之上两个盒子之间</span>
+target_pose <span class="token operator">=</span> PoseStamped<span class="token punctuation">(</span><span class="token punctuation">)</span>
+target_pose<span class="token punctuation">.</span>header<span class="token punctuation">.</span>frame_id <span class="token operator">=</span> REFERENCE_FRAME
+target_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">0.32</span>
+target_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token number">0.0</span>
+target_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z <span class="token operator">=</span> table_ground <span class="token operator">+</span> table_size<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">+</span> target_size<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">/</span> <span class="token number">2.0</span>
+target_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation<span class="token punctuation">.</span>w <span class="token operator">=</span> <span class="token number">1.0</span>
+</code></pre></div><h3 id="_2-3设置物体的放置位置"><a href="#_2-3设置物体的放置位置" class="header-anchor">#</a> 2.3设置物体的放置位置</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 设置一个place阶段需要放置物体的目标位置</span>
+place_pose <span class="token operator">=</span> PoseStamped<span class="token punctuation">(</span><span class="token punctuation">)</span>
+place_pose<span class="token punctuation">.</span>header<span class="token punctuation">.</span>frame_id <span class="token operator">=</span> REFERENCE_FRAME
+place_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">0.32</span>
+place_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">0.2</span>
+place_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z <span class="token operator">=</span> table_ground <span class="token operator">+</span> table_size<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">+</span> target_size<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">/</span> <span class="token number">2.0</span>
+place_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation<span class="token punctuation">.</span>w <span class="token operator">=</span> <span class="token number">1.0</span>
+</code></pre></div><h3 id="_2-4生成抓取姿态"><a href="#_2-4生成抓取姿态" class="header-anchor">#</a> 2.4生成抓取姿态</h3> <div class="language-python extra-class"><pre class="language-python"><code>    <span class="token comment"># 创建夹爪的姿态数据JointTrajectory</span>
+    <span class="token keyword">def</span> <span class="token function">make_gripper_posture</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> joint_positions<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 初始化夹爪的关节运动轨迹</span>
+        t <span class="token operator">=</span> JointTrajectory<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 设置夹爪的关节名称</span>
+        t<span class="token punctuation">.</span>joint_names <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'finger_joint1'</span><span class="token punctuation">]</span>
+        
+        <span class="token comment"># 初始化关节轨迹点</span>
+        tp <span class="token operator">=</span> JointTrajectoryPoint<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 将输入的关节位置作为一个目标轨迹点</span>
+        tp<span class="token punctuation">.</span>positions <span class="token operator">=</span> joint_positions
+        
+        <span class="token comment"># 设置夹爪的力度</span>
+        tp<span class="token punctuation">.</span>effort <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1.0</span><span class="token punctuation">]</span>
+        
+        <span class="token comment"># 设置运动时间</span>
+        tp<span class="token punctuation">.</span>time_from_start <span class="token operator">=</span> rospy<span class="token punctuation">.</span>Duration<span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 将目标轨迹点加入到运动轨迹中</span>
+        t<span class="token punctuation">.</span>points<span class="token punctuation">.</span>append<span class="token punctuation">(</span>tp<span class="token punctuation">)</span>
+        
+        <span class="token comment"># 返回夹爪的关节运动轨迹</span>
+        <span class="token keyword">return</span> t
+    
+    <span class="token comment"># 使用给定向量创建夹爪的translation结构</span>
+    <span class="token keyword">def</span> <span class="token function">make_gripper_translation</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> min_dist<span class="token punctuation">,</span> desired<span class="token punctuation">,</span> vector<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 初始化translation对象</span>
+        g <span class="token operator">=</span> GripperTranslation<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 设置方向向量</span>
+        g<span class="token punctuation">.</span>direction<span class="token punctuation">.</span>vector<span class="token punctuation">.</span>x <span class="token operator">=</span> vector<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        g<span class="token punctuation">.</span>direction<span class="token punctuation">.</span>vector<span class="token punctuation">.</span>y <span class="token operator">=</span> vector<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+        g<span class="token punctuation">.</span>direction<span class="token punctuation">.</span>vector<span class="token punctuation">.</span>z <span class="token operator">=</span> vector<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>
+        
+        <span class="token comment"># 设置参考坐标系</span>
+        g<span class="token punctuation">.</span>direction<span class="token punctuation">.</span>header<span class="token punctuation">.</span>frame_id <span class="token operator">=</span> GRIPPER_FRAME
+        
+        <span class="token comment"># 设置最小和期望的距离</span>
+        g<span class="token punctuation">.</span>min_distance <span class="token operator">=</span> min_dist
+        g<span class="token punctuation">.</span>desired_distance <span class="token operator">=</span> desired
+        
+        <span class="token keyword">return</span> g
+
+    <span class="token comment"># 创建一个允许的的抓取姿态列表</span>
+    <span class="token keyword">def</span> <span class="token function">make_grasps</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> initial_pose_stamped<span class="token punctuation">,</span> allowed_touch_objects<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 初始化抓取姿态对象</span>
+        g <span class="token operator">=</span> Grasp<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 创建夹爪张开、闭合的姿态</span>
+        g<span class="token punctuation">.</span>pre_grasp_posture <span class="token operator">=</span> self<span class="token punctuation">.</span>make_gripper_posture<span class="token punctuation">(</span>GRIPPER_OPEN<span class="token punctuation">)</span>
+        g<span class="token punctuation">.</span>grasp_posture <span class="token operator">=</span> self<span class="token punctuation">.</span>make_gripper_posture<span class="token punctuation">(</span>GRIPPER_CLOSED<span class="token punctuation">)</span>
+                
+        <span class="token comment"># 设置期望的夹爪靠近、撤离目标的参数</span>
+        g<span class="token punctuation">.</span>pre_grasp_approach <span class="token operator">=</span> self<span class="token punctuation">.</span>make_gripper_translation<span class="token punctuation">(</span><span class="token number">0.01</span><span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        g<span class="token punctuation">.</span>post_grasp_retreat <span class="token operator">=</span> self<span class="token punctuation">.</span>make_gripper_translation<span class="token punctuation">(</span><span class="token number">0.1</span><span class="token punctuation">,</span> <span class="token number">0.15</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 设置抓取姿态</span>
+        g<span class="token punctuation">.</span>grasp_pose <span class="token operator">=</span> initial_pose_stamped
+    
+        <span class="token comment"># 需要尝试改变姿态的数据列表</span>
+        pitch_vals <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.1</span><span class="token punctuation">,</span> <span class="token number">0.2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.2</span><span class="token punctuation">,</span> <span class="token number">0.3</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.3</span><span class="token punctuation">]</span>
+        yaw_vals <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+
+        <span class="token comment"># 抓取姿态的列表</span>
+        grasps <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+        <span class="token comment"># 改变姿态，生成抓取动作</span>
+        <span class="token keyword">for</span> y <span class="token keyword">in</span> yaw_vals<span class="token punctuation">:</span>
+            <span class="token keyword">for</span> p <span class="token keyword">in</span> pitch_vals<span class="token punctuation">:</span>
+                <span class="token comment"># 欧拉角到四元数的转换</span>
+                q <span class="token operator">=</span> quaternion_from_euler<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> p<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+                
+                <span class="token comment"># 设置抓取的姿态</span>
+                g<span class="token punctuation">.</span>grasp_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation<span class="token punctuation">.</span>x <span class="token operator">=</span> q<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+                g<span class="token punctuation">.</span>grasp_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation<span class="token punctuation">.</span>y <span class="token operator">=</span> q<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+                g<span class="token punctuation">.</span>grasp_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation<span class="token punctuation">.</span>z <span class="token operator">=</span> q<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>
+                g<span class="token punctuation">.</span>grasp_pose<span class="token punctuation">.</span>pose<span class="token punctuation">.</span>orientation<span class="token punctuation">.</span>w <span class="token operator">=</span> q<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span>
+                
+                <span class="token comment"># 设置抓取的唯一id号</span>
+                g<span class="token punctuation">.</span><span class="token builtin">id</span> <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>grasps<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                
+                <span class="token comment"># 设置允许接触的物体</span>
+                g<span class="token punctuation">.</span>allowed_touch_objects <span class="token operator">=</span> allowed_touch_objects
+                
+                <span class="token comment"># 将本次规划的抓取放入抓取列表中</span>
+                grasps<span class="token punctuation">.</span>append<span class="token punctuation">(</span>deepcopy<span class="token punctuation">(</span>g<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                
+        <span class="token comment"># 返回抓取列表</span>
+        <span class="token keyword">return</span> grasps
+</code></pre></div><h3 id="_2-5pick动作"><a href="#_2-5pick动作" class="header-anchor">#</a> 2.5pick动作</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 重复尝试抓取，直道成功或者超多最大尝试次数</span>
+<span class="token keyword">while</span> result <span class="token operator">!=</span> MoveItErrorCodes<span class="token punctuation">.</span>SUCCESS <span class="token keyword">and</span> n_attempts <span class="token operator">&lt;</span> max_pick_attempts<span class="token punctuation">:</span>
+    n_attempts <span class="token operator">+=</span> <span class="token number">1</span>
+    rospy<span class="token punctuation">.</span>loginfo<span class="token punctuation">(</span><span class="token string">&quot;Pick attempt: &quot;</span> <span class="token operator">+</span>  <span class="token builtin">str</span><span class="token punctuation">(</span>n_attempts<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    result <span class="token operator">=</span> arm<span class="token punctuation">.</span>pick<span class="token punctuation">(</span>target_id<span class="token punctuation">,</span> grasps<span class="token punctuation">)</span>
+    rospy<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">0.2</span><span class="token punctuation">)</span>
+</code></pre></div><p>针对不同的抓取姿态，如果无法求解运动学逆解或者规划轨迹会发生碰撞，pick动作则会出错</p> <h3 id="_2-6place动作"><a href="#_2-6place动作" class="header-anchor">#</a> 2.6place动作</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 如果pick成功，则进入place阶段 </span>
+<span class="token keyword">if</span> result <span class="token operator">==</span> MoveItErrorCodes<span class="token punctuation">.</span>SUCCESS<span class="token punctuation">:</span>
+    result <span class="token operator">=</span> <span class="token boolean">None</span>
+    n_attempts <span class="token operator">=</span> <span class="token number">0</span>
+    
+    <span class="token comment"># 生成放置姿态</span>
+    places <span class="token operator">=</span> self<span class="token punctuation">.</span>make_places<span class="token punctuation">(</span>place_pose<span class="token punctuation">)</span>
+    
+    <span class="token comment"># 重复尝试放置，直道成功或者超多最大尝试次数</span>
+    <span class="token keyword">while</span> result <span class="token operator">!=</span> MoveItErrorCodes<span class="token punctuation">.</span>SUCCESS <span class="token keyword">and</span> n_attempts <span class="token operator">&lt;</span> max_place_attempts<span class="token punctuation">:</span>
+        n_attempts <span class="token operator">+=</span> <span class="token number">1</span>
+        rospy<span class="token punctuation">.</span>loginfo<span class="token punctuation">(</span><span class="token string">&quot;Place attempt: &quot;</span> <span class="token operator">+</span>  <span class="token builtin">str</span><span class="token punctuation">(</span>n_attempts<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> place <span class="token keyword">in</span> places<span class="token punctuation">:</span>
+            result <span class="token operator">=</span> arm<span class="token punctuation">.</span>place<span class="token punctuation">(</span>target_id<span class="token punctuation">,</span> place<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> result <span class="token operator">==</span> MoveItErrorCodes<span class="token punctuation">.</span>SUCCESS<span class="token punctuation">:</span>
+                <span class="token keyword">break</span>
+        rospy<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">0.2</span><span class="token punctuation">)</span>
+</code></pre></div><p>使用make_place()方法生成一个可能的夹爪放置姿态，然后根据这些可能的放置姿态尝试规划place操作的轨迹</p></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-70334359><li class="level-2" data-v-70334359><a href="/blog/article/ros/14.html#一、moveit-编程" class="sidebar-link reco-side-一、moveit-编程" data-v-70334359>一、MoveIt!编程</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/14.html#_1-1关节空间规则" class="sidebar-link reco-side-_1-1关节空间规则" data-v-70334359>1.1关节空间规则</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/14.html#_1-2工作空间规划" class="sidebar-link reco-side-_1-2工作空间规划" data-v-70334359>1.2工作空间规划</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/14.html#_1-3笛卡尔运动规划" class="sidebar-link reco-side-_1-3笛卡尔运动规划" data-v-70334359>1.3笛卡尔运动规划</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/14.html#_1-4避障规划" class="sidebar-link reco-side-_1-4避障规划" data-v-70334359>1.4避障规划</a></li><li class="level-2" data-v-70334359><a href="/blog/article/ros/14.html#二、pick-and-place实例" class="sidebar-link reco-side-二、pick-and-place实例" data-v-70334359>二、pick and place实例</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/14.html#_2-1应用效果" class="sidebar-link reco-side-_2-1应用效果" data-v-70334359>2.1应用效果</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/14.html#_2-2抓取物体" class="sidebar-link reco-side-_2-2抓取物体" data-v-70334359>2.2抓取物体</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/14.html#_2-3设置物体的放置位置" class="sidebar-link reco-side-_2-3设置物体的放置位置" data-v-70334359>2.3设置物体的放置位置</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/14.html#_2-4生成抓取姿态" class="sidebar-link reco-side-_2-4生成抓取姿态" data-v-70334359>2.4生成抓取姿态</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/14.html#_2-5pick动作" class="sidebar-link reco-side-_2-5pick动作" data-v-70334359>2.5pick动作</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/14.html#_2-6place动作" class="sidebar-link reco-side-_2-6place动作" data-v-70334359>2.6place动作</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><div class="kanbanniang" data-v-5775ee02><div class="banniang-container" style="display:;" data-v-5775ee02><div class="messageBox" style="right:68px;bottom:190px;display:none;" data-v-5775ee02>
+      欢迎来到 Oreo's Blog
+    </div> <div class="operation" style="right:90px;bottom:40px;display:none;" data-v-5775ee02><i class="kbnfont kbn-ban-home ban-home" data-v-5775ee02></i> <i class="kbnfont kbn-ban-message message" data-v-5775ee02></i> <i class="kbnfont kbn-ban-close close" data-v-5775ee02></i> <a target="_blank" href="https://vuepress-theme-reco.recoluan.com/views/plugins/kanbanniang.html" data-v-5775ee02><i class="kbnfont kbn-ban-info info" data-v-5775ee02></i></a> <i class="kbnfont kbn-ban-theme skin" style="display:none;" data-v-5775ee02></i></div> <canvas id="banniang" width="150" height="220" class="live2d" style="position:fixed;right:25px;bottom:5px;opacity:1;z-index:99999;" data-v-5775ee02></canvas></div> <div class="showBanNiang" style="display:none;" data-v-5775ee02>
+    看板娘
+  </div></div></div></div>
+    <script src="/blog/assets/js/app.b808e0f6.js" defer></script><script src="/blog/assets/js/3.527c74a3.js" defer></script><script src="/blog/assets/js/1.832c2bf8.js" defer></script><script src="/blog/assets/js/109.9e9139c4.js" defer></script>
+  </body>
+</html>

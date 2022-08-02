@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ROS入门（五） | Oreo&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/blog/logo.png">
+    <meta name="description" content="我奔涌的暖流 寻找你的海洋">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.6e7466a2.css" as="style"><link rel="preload" href="/blog/assets/js/app.b808e0f6.js" as="script"><link rel="preload" href="/blog/assets/js/3.527c74a3.js" as="script"><link rel="preload" href="/blog/assets/js/1.832c2bf8.js" as="script"><link rel="preload" href="/blog/assets/js/100.0e7a5044.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.45e53a01.js"><link rel="prefetch" href="/blog/assets/js/101.edb45450.js"><link rel="prefetch" href="/blog/assets/js/102.83c8fa83.js"><link rel="prefetch" href="/blog/assets/js/103.1d8fdf8f.js"><link rel="prefetch" href="/blog/assets/js/104.68e3bcd8.js"><link rel="prefetch" href="/blog/assets/js/105.90e55d86.js"><link rel="prefetch" href="/blog/assets/js/106.24bfbf96.js"><link rel="prefetch" href="/blog/assets/js/107.0b47c7f9.js"><link rel="prefetch" href="/blog/assets/js/108.fa2af2ec.js"><link rel="prefetch" href="/blog/assets/js/109.9e9139c4.js"><link rel="prefetch" href="/blog/assets/js/11.805ddce2.js"><link rel="prefetch" href="/blog/assets/js/110.b3e91794.js"><link rel="prefetch" href="/blog/assets/js/111.e6db096d.js"><link rel="prefetch" href="/blog/assets/js/112.9fd4e785.js"><link rel="prefetch" href="/blog/assets/js/113.d180e44f.js"><link rel="prefetch" href="/blog/assets/js/114.baafd98f.js"><link rel="prefetch" href="/blog/assets/js/115.fc0ba306.js"><link rel="prefetch" href="/blog/assets/js/116.6bcdcbdd.js"><link rel="prefetch" href="/blog/assets/js/117.a1d1f784.js"><link rel="prefetch" href="/blog/assets/js/118.ba24d936.js"><link rel="prefetch" href="/blog/assets/js/119.049ec4d9.js"><link rel="prefetch" href="/blog/assets/js/12.b237dcc6.js"><link rel="prefetch" href="/blog/assets/js/13.af159f21.js"><link rel="prefetch" href="/blog/assets/js/14.42ea1354.js"><link rel="prefetch" href="/blog/assets/js/15.54877712.js"><link rel="prefetch" href="/blog/assets/js/16.d368caa9.js"><link rel="prefetch" href="/blog/assets/js/17.a786bc1a.js"><link rel="prefetch" href="/blog/assets/js/18.f73dd961.js"><link rel="prefetch" href="/blog/assets/js/19.5a563b69.js"><link rel="prefetch" href="/blog/assets/js/20.de03a37a.js"><link rel="prefetch" href="/blog/assets/js/21.444c354c.js"><link rel="prefetch" href="/blog/assets/js/22.1d4f402b.js"><link rel="prefetch" href="/blog/assets/js/23.4f00fa89.js"><link rel="prefetch" href="/blog/assets/js/24.393f96f9.js"><link rel="prefetch" href="/blog/assets/js/25.ee02e102.js"><link rel="prefetch" href="/blog/assets/js/26.b2d4c46c.js"><link rel="prefetch" href="/blog/assets/js/27.1698e989.js"><link rel="prefetch" href="/blog/assets/js/28.89c9b4ae.js"><link rel="prefetch" href="/blog/assets/js/29.9796018a.js"><link rel="prefetch" href="/blog/assets/js/30.e4c48001.js"><link rel="prefetch" href="/blog/assets/js/31.a22eecb3.js"><link rel="prefetch" href="/blog/assets/js/32.30047ec8.js"><link rel="prefetch" href="/blog/assets/js/33.b902c8c8.js"><link rel="prefetch" href="/blog/assets/js/34.4fb71194.js"><link rel="prefetch" href="/blog/assets/js/35.c7b308bc.js"><link rel="prefetch" href="/blog/assets/js/36.d712cccb.js"><link rel="prefetch" href="/blog/assets/js/37.a8169307.js"><link rel="prefetch" href="/blog/assets/js/38.583dccfb.js"><link rel="prefetch" href="/blog/assets/js/39.15a2b065.js"><link rel="prefetch" href="/blog/assets/js/4.15cffd70.js"><link rel="prefetch" href="/blog/assets/js/40.ec3247e5.js"><link rel="prefetch" href="/blog/assets/js/41.852d94a8.js"><link rel="prefetch" href="/blog/assets/js/42.dbc832c8.js"><link rel="prefetch" href="/blog/assets/js/43.cc17431b.js"><link rel="prefetch" href="/blog/assets/js/44.bf4241c4.js"><link rel="prefetch" href="/blog/assets/js/45.97114b98.js"><link rel="prefetch" href="/blog/assets/js/46.a84fabee.js"><link rel="prefetch" href="/blog/assets/js/47.3f5b4ddb.js"><link rel="prefetch" href="/blog/assets/js/48.1ad0c955.js"><link rel="prefetch" href="/blog/assets/js/49.aedeebf1.js"><link rel="prefetch" href="/blog/assets/js/5.ee387f14.js"><link rel="prefetch" href="/blog/assets/js/50.ea3511ce.js"><link rel="prefetch" href="/blog/assets/js/51.d1fab71f.js"><link rel="prefetch" href="/blog/assets/js/52.27fc42ac.js"><link rel="prefetch" href="/blog/assets/js/53.561e1cd0.js"><link rel="prefetch" href="/blog/assets/js/54.b9e36ff5.js"><link rel="prefetch" href="/blog/assets/js/55.8191d414.js"><link rel="prefetch" href="/blog/assets/js/56.03c77272.js"><link rel="prefetch" href="/blog/assets/js/57.9680c069.js"><link rel="prefetch" href="/blog/assets/js/58.036362fc.js"><link rel="prefetch" href="/blog/assets/js/59.ae4a9239.js"><link rel="prefetch" href="/blog/assets/js/6.4adc9307.js"><link rel="prefetch" href="/blog/assets/js/60.193cd8b8.js"><link rel="prefetch" href="/blog/assets/js/61.1637df96.js"><link rel="prefetch" href="/blog/assets/js/62.83f79dbf.js"><link rel="prefetch" href="/blog/assets/js/63.495ba5fd.js"><link rel="prefetch" href="/blog/assets/js/64.5723f524.js"><link rel="prefetch" href="/blog/assets/js/65.32ab755a.js"><link rel="prefetch" href="/blog/assets/js/66.fe293b1d.js"><link rel="prefetch" href="/blog/assets/js/67.d70f894b.js"><link rel="prefetch" href="/blog/assets/js/68.f2fecdc2.js"><link rel="prefetch" href="/blog/assets/js/69.9d02b1c7.js"><link rel="prefetch" href="/blog/assets/js/7.459f04e5.js"><link rel="prefetch" href="/blog/assets/js/70.18eaf151.js"><link rel="prefetch" href="/blog/assets/js/71.343d830c.js"><link rel="prefetch" href="/blog/assets/js/72.c7c24e56.js"><link rel="prefetch" href="/blog/assets/js/73.e28d060a.js"><link rel="prefetch" href="/blog/assets/js/74.187fc235.js"><link rel="prefetch" href="/blog/assets/js/75.80430747.js"><link rel="prefetch" href="/blog/assets/js/76.519ba9a3.js"><link rel="prefetch" href="/blog/assets/js/77.f420a514.js"><link rel="prefetch" href="/blog/assets/js/78.36787cfd.js"><link rel="prefetch" href="/blog/assets/js/79.18076946.js"><link rel="prefetch" href="/blog/assets/js/8.9604734a.js"><link rel="prefetch" href="/blog/assets/js/80.52ec254c.js"><link rel="prefetch" href="/blog/assets/js/81.7e92f9d7.js"><link rel="prefetch" href="/blog/assets/js/82.9d775810.js"><link rel="prefetch" href="/blog/assets/js/83.e42d88d5.js"><link rel="prefetch" href="/blog/assets/js/84.f691ec49.js"><link rel="prefetch" href="/blog/assets/js/85.0a9b28d2.js"><link rel="prefetch" href="/blog/assets/js/86.f299bfa1.js"><link rel="prefetch" href="/blog/assets/js/87.dbc2d7fe.js"><link rel="prefetch" href="/blog/assets/js/88.4d956b4c.js"><link rel="prefetch" href="/blog/assets/js/89.c1317d97.js"><link rel="prefetch" href="/blog/assets/js/9.220e196c.js"><link rel="prefetch" href="/blog/assets/js/90.124bc804.js"><link rel="prefetch" href="/blog/assets/js/91.1a4c7a5e.js"><link rel="prefetch" href="/blog/assets/js/92.d61bced9.js"><link rel="prefetch" href="/blog/assets/js/93.7918b8a0.js"><link rel="prefetch" href="/blog/assets/js/94.29b2b508.js"><link rel="prefetch" href="/blog/assets/js/95.e75b4fce.js"><link rel="prefetch" href="/blog/assets/js/96.9426d4b5.js"><link rel="prefetch" href="/blog/assets/js/97.1ab10063.js"><link rel="prefetch" href="/blog/assets/js/98.300505a1.js"><link rel="prefetch" href="/blog/assets/js/99.77643972.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.6e7466a2.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-1156296a><div data-v-1156296a><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1156296a data-v-1156296a><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-4e82dffc data-v-1156296a data-v-1156296a><h3 class="title" data-v-4e82dffc data-v-4e82dffc>Oreo's Blog</h3> <p class="description" data-v-4e82dffc data-v-4e82dffc>我奔涌的暖流 寻找你的海洋</p> <label id="box" class="inputBox" data-v-4e82dffc data-v-4e82dffc><input type="password" value="" data-v-4e82dffc> <span data-v-4e82dffc>Konck! Knock!</span> <button data-v-4e82dffc>OK</button></label> <div class="footer" data-v-4e82dffc data-v-4e82dffc><span data-v-4e82dffc><i class="iconfont reco-theme" data-v-4e82dffc></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-4e82dffc>vuePress-theme-reco</a></span> <span data-v-4e82dffc><i class="iconfont reco-copyright" data-v-4e82dffc></i> <a data-v-4e82dffc><span data-v-4e82dffc>Oreo!</span>
+            
+          <!---->
+          2022
+        </a></span></div></div> <div class="hide" data-v-1156296a><header class="navbar" data-v-1156296a><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><img src="/blog/avatar/logo.PNG" alt="Oreo's Blog" class="logo"> <span class="site-name">Oreo's Blog</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/categories/其他/" class="nav-link"><i class="undefined"></i>
+  其他
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/算法/" class="nav-link"><i class="undefined"></i>
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/C++/" class="nav-link"><i class="undefined"></i>
+  C++
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/STL/" class="nav-link"><i class="undefined"></i>
+  STL
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/数据/" class="nav-link"><i class="undefined"></i>
+  数据
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/前端/" class="nav-link"><i class="undefined"></i>
+  前端
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/python/" class="nav-link"><i class="undefined"></i>
+  python
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/MATLAB/" class="nav-link"><i class="undefined"></i>
+  MATLAB
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/后端/" class="nav-link"><i class="undefined"></i>
+  后端
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/OS/" class="nav-link"><i class="undefined"></i>
+  OS
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/ROS/" class="nav-link"><i class="undefined"></i>
+  ROS
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/路线图/" class="nav-link"><i class="undefined"></i>
+  路线图
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/blog/review/" class="nav-link"><i class="iconfont reco-blog"></i>
+  回顾
+</a></div><div class="nav-item"><a href="/blog/about/" class="nav-link"><i class="iconfont reco-account"></i>
+  关于
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1156296a></div> <aside class="sidebar" data-v-1156296a><div class="personal-info-wrapper" data-v-828910c6 data-v-1156296a><img src="/blog/avatar/avatar.jpg" alt="author-avatar" class="personal-img" data-v-828910c6> <h3 class="name" data-v-828910c6>
+    Oreo!
+  </h3> <div class="num" data-v-828910c6><div data-v-828910c6><h3 data-v-828910c6>109</h3> <h6 data-v-828910c6>文章</h6></div> <div data-v-828910c6><h3 data-v-828910c6>39</h3> <h6 data-v-828910c6>标签</h6></div></div> <ul class="social-links" data-v-828910c6></ul> <hr data-v-828910c6></div> <nav class="nav-links"><div class="nav-item"><a href="/blog/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/categories/其他/" class="nav-link"><i class="undefined"></i>
+  其他
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/算法/" class="nav-link"><i class="undefined"></i>
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/C++/" class="nav-link"><i class="undefined"></i>
+  C++
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/STL/" class="nav-link"><i class="undefined"></i>
+  STL
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/数据/" class="nav-link"><i class="undefined"></i>
+  数据
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/前端/" class="nav-link"><i class="undefined"></i>
+  前端
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/python/" class="nav-link"><i class="undefined"></i>
+  python
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/MATLAB/" class="nav-link"><i class="undefined"></i>
+  MATLAB
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/后端/" class="nav-link"><i class="undefined"></i>
+  后端
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/OS/" class="nav-link"><i class="undefined"></i>
+  OS
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/ROS/" class="nav-link"><i class="undefined"></i>
+  ROS
+</a></li><li class="dropdown-item"><!----> <a href="/blog/categories/路线图/" class="nav-link"><i class="undefined"></i>
+  路线图
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/blog/review/" class="nav-link"><i class="iconfont reco-blog"></i>
+  回顾
+</a></div><div class="nav-item"><a href="/blog/about/" class="nav-link"><i class="iconfont reco-account"></i>
+  关于
+</a></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-4e82dffc data-v-1156296a><h3 class="title" data-v-4e82dffc data-v-4e82dffc>ROS入门（五）</h3> <!----> <label id="box" class="inputBox" data-v-4e82dffc data-v-4e82dffc><input type="password" value="" data-v-4e82dffc> <span data-v-4e82dffc>Konck! Knock!</span> <button data-v-4e82dffc>OK</button></label> <div class="footer" data-v-4e82dffc data-v-4e82dffc><span data-v-4e82dffc><i class="iconfont reco-theme" data-v-4e82dffc></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-4e82dffc>vuePress-theme-reco</a></span> <span data-v-4e82dffc><i class="iconfont reco-copyright" data-v-4e82dffc></i> <a data-v-4e82dffc><span data-v-4e82dffc>Oreo!</span>
+            
+          <!---->
+          2022
+        </a></span></div></div> <div data-v-1156296a><main class="page"><section><div class="page-title"><h1 class="title">ROS入门（五）</h1> <div data-v-1ff7123e><i class="iconfont reco-account" data-v-1ff7123e><span data-v-1ff7123e>Oreo!</span></i> <i class="iconfont reco-date" data-v-1ff7123e><span data-v-1ff7123e>2021/7/31</span></i> <i class="iconfont reco-eye" data-v-1ff7123e><span id="/blog/article/ros/05.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-1ff7123e><a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;"></a></span></i> <i class="tags iconfont reco-tag" data-v-1ff7123e><span class="tag-item" data-v-1ff7123e>ROS</span><span class="tag-item" data-v-1ff7123e>机器人开发</span></i></div></div> <div class="theme-reco-content content__default"><h2 id="一、参数使用与编程"><a href="#一、参数使用与编程" class="header-anchor">#</a> 一、参数使用与编程</h2> <h3 id="_1-1参数模型"><a href="#_1-1参数模型" class="header-anchor">#</a> 1.1参数模型</h3> <p>在ROS系统中有一个参数服务器（Parameter Server），其作为一个全局字典，保存各个节点的配置参数</p> <p>可以将Parameter Server理解成一个存储全局变量的存储空间</p> <img src="https://i.loli.net/2021/07/30/ehu2lnDACUS7PxF.png" alt="2021-07-30 11-27-47 的屏幕截图.png" style="zoom:50%;"> <h3 id="_1-2创建功能包"><a href="#_1-2创建功能包" class="header-anchor">#</a> 1.2创建功能包</h3> <img src="https://i.loli.net/2021/07/30/a2Bt1Rx6c8S4EWA.png" alt="2021-07-30 11-40-15 的屏幕截图.png" style="zoom:50%;"> <h3 id="_1-3parameter命令行使用"><a href="#_1-3parameter命令行使用" class="header-anchor">#</a> 1.3Parameter命令行使用</h3> <p>如果参数比较多的情况，会使用一个YAML文件用于保存参数，避免了一个个对参数进行设定</p> <p>后续直接读取该文件即可以一次性保存所有参数进入系统，如下所示：</p> <img src="https://i.loli.net/2021/07/30/vsNh6rouaHZUbyt.png" alt="2021-07-30 11-55-23 的屏幕截图.png" style="zoom:67%;"> <p><code>rosparam</code>命令行工具的使用</p> <ul><li>列出系统当前多个参数</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code>rosparam list
+</code></pre></div><p><img src="https://i.loli.net/2021/07/30/tXaQZoVWSBGhYJU.png" alt="2021-07-30 11-58-30 的屏幕截图.png"></p> <ul><li>显示某个参数</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code>rosparam get ***<span class="token punctuation">(</span>参数名<span class="token punctuation">)</span>
+</code></pre></div><p><img src="https://i.loli.net/2021/07/30/WNykMgKmG7ePnR2.png" alt="2021-07-30 12-00-45 的屏幕截图.png"></p> <ul><li>设置某个参数</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code>rosparam <span class="token builtin class-name">set</span> ***<span class="token punctuation">(</span>参数名<span class="token punctuation">)</span> ***<span class="token punctuation">(</span>设定参数<span class="token punctuation">)</span>
+</code></pre></div><p><img src="https://i.loli.net/2021/07/30/s6JXuyIQkgh8xNw.png" alt="2021-07-30 12-03-37 的屏幕截图.png"></p> <p>完成设定后，参数进行修改，如本案例中的海龟模拟器背景颜色发生改变：</p> <img src="https://i.loli.net/2021/07/30/h1mjxNCeXGs4wz6.png" alt="2021-07-30 12-05-29 的屏幕截图.png" style="zoom:80%;"> <ul><li>保存参数到文件</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code>rosparam dump ***<span class="token punctuation">(</span>文件名<span class="token punctuation">)</span>
+</code></pre></div><p><img src="https://i.loli.net/2021/07/30/foF2YyNKsMCdaRv.png" alt="2021-07-30 12-07-49 的屏幕截图.png"></p> <p>使用该命令后则在命令行当前文件目录下生成一个保存参数的文件</p> <p><img src="https://i.loli.net/2021/07/30/ZrfWGRkaiUE8StJ.png" alt="2021-07-30 12-08-42 的屏幕截图.png"></p> <ul><li>从文件读取参数</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code>rosparam load ***<span class="token punctuation">(</span>文件名<span class="token punctuation">)</span>
+</code></pre></div><ul><li>删除参数</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code>rosparam delete ***<span class="token punctuation">(</span>参数名<span class="token punctuation">)</span>
+</code></pre></div><h3 id="_1-4编程实现"><a href="#_1-4编程实现" class="header-anchor">#</a> 1.4编程实现</h3> <div class="language-c++ extra-class"><pre class="language-text"><code>/**
+ * 该例程设置/读取海龟例程中的参数
+ */
+#include &lt;string&gt;
+#include &lt;ros/ros.h&gt;
+#include &lt;std_srvs/Empty.h&gt;
+
+int main(int argc, char **argv)
+{
+	int red, green, blue;
+    // ROS节点初始化
+    ros::init(argc, argv, &quot;parameter_config&quot;);
+    // 创建节点句柄
+    ros::NodeHandle node;
+    // 读取背景颜色参数
+	ros::param::get(&quot;/background_r&quot;, red);
+	ros::param::get(&quot;/background_g&quot;, green);
+	ros::param::get(&quot;/background_b&quot;, blue);
+	ROS_INFO(&quot;Get Backgroud Color[%d, %d, %d]&quot;, red, green, blue);
+	// 设置背景颜色参数
+	ros::param::set(&quot;/background_r&quot;, 255);
+	ros::param::set(&quot;/background_g&quot;, 255);
+	ros::param::set(&quot;/background_b&quot;, 255);
+	ROS_INFO(&quot;Set Backgroud Color[255, 255, 255]&quot;);
+    // 读取背景颜色参数
+	ros::param::get(&quot;/background_r&quot;, red);
+	ros::param::get(&quot;/background_g&quot;, green);
+	ros::param::get(&quot;/background_b&quot;, blue);
+	ROS_INFO(&quot;Re-get Backgroud Color[%d, %d, %d]&quot;, red, green, blue);
+	// 调用服务，刷新背景颜色
+	ros::service::waitForService(&quot;/clear&quot;);
+	ros::ServiceClient clear_background = node.serviceClient&lt;std_srvs::Empty&gt;(&quot;/clear&quot;);
+	std_srvs::Empty srv;
+	clear_background.call(srv);
+	sleep(1);
+    return 0;
+}
+</code></pre></div><p>程序较为简单，调用一个API接口即可以实现对参数的get和set</p> <ul><li>通过参数名获取参数值并保存至变量：<code>ros::param::get(&quot;/background_r&quot;, red);</code></li> <li>配置参数：<code>ros::param::set(&quot;/background_r&quot;, 255);</code></li> <li>刷新服务：</li></ul> <div class="language-c++ extra-class"><pre class="language-text"><code>// 调用服务，刷新背景颜色
+ros::service::waitForService(&quot;/clear&quot;);
+ros::ServiceClient clear_background = node.serviceClient&lt;std_srvs::Empty&gt;(&quot;/clear&quot;);
+std_srvs::Empty srv;
+clear_background.call(srv);
+</code></pre></div><h3 id="_1-5配置编译规则"><a href="#_1-5配置编译规则" class="header-anchor">#</a> 1.5配置编译规则</h3> <div class="language-cmake extra-class"><pre class="language-cmake"><code><span class="token keyword">add_executable</span><span class="token punctuation">(</span>parameter_config src/parameter_config.cpp<span class="token punctuation">)</span>
+<span class="token keyword">target_link_libraries</span><span class="token punctuation">(</span>parameter_config <span class="token punctuation">${</span>catkin_LIBRARIES<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="_1-6编译运行"><a href="#_1-6编译运行" class="header-anchor">#</a> 1.6编译运行</h3> <img src="https://i.loli.net/2021/07/30/WwPgrdnI2lt7oqx.png" alt="2021-07-30 12-21-47 的屏幕截图.png" style="zoom:50%;"> <p>结果如下所示：</p> <img src="https://i.loli.net/2021/07/30/tcuUgn1AaSdQ6MH.png" alt="2021-07-30 12-25-22 的屏幕截图.png" style="zoom:67%;"> <img src="https://i.loli.net/2021/07/30/okTEsVg9yzXQ1Ob.png" alt="2021-07-30 12-25-35 的屏幕截图.png" style="zoom:67%;"> <h2 id="二、ros中坐标管理系统tf"><a href="#二、ros中坐标管理系统tf" class="header-anchor">#</a> 二、ROS中坐标管理系统TF</h2> <h3 id="_2-1概念"><a href="#_2-1概念" class="header-anchor">#</a> 2.1概念</h3> <img src="https://i.loli.net/2021/07/29/SYKwUAOMNB6uR8p.png" alt="2021-07-29 15-15-00 的屏幕截图.png" style="zoom:50%;"> <p>根据机器人导论，在一个机器人中存在着很多个坐标系，这些坐标系之间都有距离上的差别</p> <p>如果需要机器人进行运转就要计算坐标系之间的距离和位置计算</p> <p>TF功能包的作用就是管理机器人中存在的所有坐标系，通过这个功能包即可以通过查询的方式来解决坐标系与坐标系之间的关系和计算</p> <p>每个Ros节点只需要把自己已知的任何相对坐标发布出去，那么就把已知信息通过TF的函数计算后发布出去</p> <p><strong>TF功能包的实现机制：广播和监听</strong></p> <h3 id="_2-2基本功能演示"><a href="#_2-2基本功能演示" class="header-anchor">#</a> 2.2基本功能演示</h3> <img src="https://i.loli.net/2021/07/29/2JfTISBLW8tFaCk.png" alt="2021-07-29 20-01-49 的屏幕截图.png" style="zoom:50%;"> <ul><li><code>roslaunch</code>指令用于启动ROS系统中的一个launch文件，launch文件可以理解成一个脚本文件启动多个节点</li></ul> <p>也就是使用该命令可以启动多个节点</p> <p>使用结果如下：</p> <img src="https://i.loli.net/2021/07/29/rl85HPkvxezf4F6.png" alt="2021-07-29 20-44-33 的屏幕截图.png" style="zoom:80%;"> <ul><li>使用<code>rosrun tf view_frames</code>命令，可以可视化的看到系统中所有坐标之间的关系</li></ul> <p>使用该命令后，默认会在终端当前路径下生成一个pdf文件，以展示节点关系</p> <img src="https://i.loli.net/2021/07/29/M9uRQOJVhlSkaPm.png" alt="2021-07-29 20-18-37 的屏幕截图.png" style="zoom:67%;"> <p>这个pdf文件展示了坐标系之间的关系</p> <p>如图所示，这个系统中存在三个坐标系分别是：<code>world</code>、<code>turtle1</code>、<code>turtle2</code></p> <p>其中<code>world</code>坐标系是不会变的，始终作为整个系统中的<strong>零点</strong>位置</p> <p>再次案例中可以抽象为<code>turtle2</code>坐标系向<code>turtle1</code>坐标系不断作变化而靠近的关系</p> <ul><li>另外，使用tf_echo工具可以直观的看到两个坐标系之间的关系</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code>rosrun tf tf_echo ***<span class="token punctuation">(</span>坐标系名<span class="token punctuation">)</span>
+</code></pre></div><img src="https://i.loli.net/2021/07/29/6gjcB3shwDQAm1S.png" alt="2021-07-29 20-31-08 的屏幕截图.png" style="zoom:67%;"> <p>如上所示：</p> <p><code>Translation</code>栏展示的是在x/y/z三轴上的平移[x, y, z]</p> <p><code>Rotation</code>栏展示的是旋转关系，分为三种方式来进行描述</p> <p><code>Quaternion</code>栏通过的是四元树的方式</p> <p><code>RPY (radian)</code>栏表示分别围绕x/y/z三轴旋转，通过弧度单位进行描述</p> <p><code>RPY (degree)</code>栏表示分别围绕x/y/z三轴旋转，通过角度单位进行描述</p> <ul><li>还可以使用<code>rosrun rviz rviz -d 'rospack find turtle_tf' /rviz/turtle_rviz.rviz</code>来观察两个坐标之间的可视化关系</li></ul> <img src="https://i.loli.net/2021/07/29/pCf4hIqS2JEDLji.png" alt="2021-07-29 20-55-43 的屏幕截图.png" style="zoom:80%;"> <h2 id="三、tf坐标系广播与监听"><a href="#三、tf坐标系广播与监听" class="header-anchor">#</a> 三、TF坐标系广播与监听</h2> <h3 id="_3-1创建功能包"><a href="#_3-1创建功能包" class="header-anchor">#</a> 3.1创建功能包</h3> <img src="https://i.loli.net/2021/07/30/rV6tf34BDLYZcCv.png" alt="2021-07-30 15-39-19 的屏幕截图.png" style="zoom:50%;"> <h3 id="_3-2tf广播器的创建"><a href="#_3-2tf广播器的创建" class="header-anchor">#</a> 3.2TF广播器的创建</h3> <div class="language-c++ extra-class"><pre class="language-text"><code>/**
+ * 该例程产生tf数据，并计算、发布turtle2的速度指令
+ */
+#include &lt;ros/ros.h&gt;
+#include &lt;tf/transform_broadcaster.h&gt;
+#include &lt;turtlesim/Pose.h&gt;
+
+std::string turtle_name;
+void poseCallback(const turtlesim::PoseConstPtr&amp; msg)
+{
+	// 创建tf的广播器
+	static tf::TransformBroadcaster br;
+	// 初始化tf数据
+	tf::Transform transform;
+	transform.setOrigin( tf::Vector3(msg-&gt;x, msg-&gt;y, 0.0) );
+	tf::Quaternion q;
+	q.setRPY(0, 0, msg-&gt;theta);
+	transform.setRotation(q);
+	// 广播world与海龟坐标系之间的tf数据
+	br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), &quot;world&quot;, turtle_name));
+}
+
+int main(int argc, char** argv)
+{
+    // 初始化ROS节点
+	ros::init(argc, argv, &quot;my_tf_broadcaster&quot;);
+	// 输入参数作为海龟的名字
+	if (argc != 2)
+	{
+		ROS_ERROR(&quot;need turtle name as argument&quot;); 
+		return -1;
+	}
+
+	turtle_name = argv[1];
+	// 订阅海龟的位姿话题
+	ros::NodeHandle node;
+	ros::Subscriber sub = node.subscribe(turtle_name+&quot;/pose&quot;, 10, &amp;poseCallback);
+    // 循环等待回调函数
+	ros::spin();
+	return 0;
+};
+</code></pre></div><h4 id="_3-2-1代码解读"><a href="#_3-2-1代码解读" class="header-anchor">#</a> 3.2.1代码解读</h4> <ul><li>通过输入参数来判断海龟与世界坐标的关系</li></ul> <div class="language-c++ extra-class"><pre class="language-text"><code>// 输入参数作为海龟的名字
+if (argc != 2)
+{
+	ROS_ERROR(&quot;need turtle name as argument&quot;); 
+	return -1;
+}
+</code></pre></div><ul><li>创建话题订阅者，接收由海龟不断发布过来的位置消息</li></ul> <div class="language-c++ extra-class"><pre class="language-text"><code>// 订阅海龟的位姿话题
+ros::NodeHandle node;
+ros::Subscriber sub = node.subscribe(turtle_name+&quot;/pose&quot;, 10, &amp;poseCallback);
+</code></pre></div><ul><li>回调函数传入参数就是海龟的位置</li></ul> <div class="language-c++ extra-class"><pre class="language-text"><code>void poseCallback(const turtlesim::PoseConstPtr&amp; msg) {}
+</code></pre></div><ul><li>创建广播器，不断将位置信息发布出去</li></ul> <div class="language-c++ extra-class"><pre class="language-text"><code>// 创建tf的广播器
+static tf::TransformBroadcaster br;
+</code></pre></div><ul><li>填充坐标系位置映射关系</li></ul> <div class="language-c++ extra-class"><pre class="language-text"><code>// 初始化tf数据
+tf::Transform transform;
+transform.setOrigin( tf::Vector3(msg-&gt;x, msg-&gt;y, 0.0) );
+tf::Quaternion q;
+q.setRPY(0, 0, msg-&gt;theta);
+transform.setRotation(q);
+</code></pre></div><ul><li>通过<code>sendTransform</code>方法广播海龟坐标与world坐标之间的关系</li></ul> <div class="language-c++ extra-class"><pre class="language-text"><code>// 广播world与海龟坐标系之间的tf数据
+br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), &quot;world&quot;, turtle_name));
+</code></pre></div><h4 id="_3-2-2流程总结"><a href="#_3-2-2流程总结" class="header-anchor">#</a> 3.2.2流程总结</h4> <p><strong>如何创建一个广播器？</strong></p> <blockquote><ul><li>定义一个TF广播器</li> <li>创建坐标变换值</li> <li>发布坐标变换</li></ul></blockquote> <h3 id="_3-3tf监听器的创建"><a href="#_3-3tf监听器的创建" class="header-anchor">#</a> 3.3TF监听器的创建</h3> <div class="language-c++ extra-class"><pre class="language-text"><code>/**
+ * 该例程监听tf数据，并计算、发布turtle2的速度指令
+ */
+#include &lt;ros/ros.h&gt;
+#include &lt;tf/transform_listener.h&gt;
+#include &lt;geometry_msgs/Twist.h&gt;
+#include &lt;turtlesim/Spawn.h&gt;
+
+int main(int argc, char** argv)
+{
+   // 初始化ROS节点
+   ros::init(argc, argv, &quot;my_tf_listener&quot;);
+    // 创建节点句柄
+   ros::NodeHandle node;
+   // 请求产生turtle2
+   ros::service::waitForService(&quot;/spawn&quot;);
+   ros::ServiceClient add_turtle = node.serviceClient&lt;turtlesim::Spawn&gt;(&quot;/spawn&quot;);
+   turtlesim::Spawn srv;
+   add_turtle.call(srv);
+   // 创建发布turtle2速度控制指令的发布者
+   ros::Publisher turtle_vel = node.advertise&lt;geometry_msgs::Twist&gt;(&quot;/turtle2/cmd_vel&quot;, 10);
+   // 创建tf的监听器
+   tf::TransformListener listener;
+   ros::Rate rate(10.0);
+   while (node.ok())
+   {
+      // 获取turtle1与turtle2坐标系之间的tf数据
+      tf::StampedTransform transform;
+      try
+      {
+         listener.waitForTransform(&quot;/turtle2&quot;, &quot;/turtle1&quot;, ros::Time(0), ros::Duration(3.0));
+         listener.lookupTransform(&quot;/turtle2&quot;, &quot;/turtle1&quot;, ros::Time(0), transform);
+      }
+      catch (tf::TransformException &amp;ex) 
+      {
+         ROS_ERROR(&quot;%s&quot;,ex.what());
+         ros::Duration(1.0).sleep();
+         continue;
+      }
+      // 根据turtle1与turtle2坐标系之间的位置关系，发布turtle2的速度控制指令
+      geometry_msgs::Twist vel_msg;
+      vel_msg.angular.z = 4.0 * atan2(transform.getOrigin().y(),
+                                    transform.getOrigin().x());
+      vel_msg.linear.x = 0.5 * sqrt(pow(transform.getOrigin().x(), 2) +
+                                  pow(transform.getOrigin().y(), 2));
+      turtle_vel.publish(vel_msg);
+
+      rate.sleep();
+   }
+   return 0;
+};
+</code></pre></div><h4 id="_3-3-1代码解读"><a href="#_3-3-1代码解读" class="header-anchor">#</a> 3.3.1代码解读</h4> <ul><li>创建监听器</li></ul> <div class="language-c++ extra-class"><pre class="language-text"><code>// 创建tf的监听器
+tf::TransformListener listener;
+</code></pre></div><ul><li>保存平移和旋转关系</li></ul> <div class="language-c++ extra-class"><pre class="language-text"><code>// 获取turtle1与turtle2坐标系之间的tf数据
+tf::StampedTransform transform;
+</code></pre></div><ul><li>等待变换和查询变换</li></ul> <div class="language-c++ extra-class"><pre class="language-text"><code>listener.waitForTransform(&quot;/turtle2&quot;, &quot;/turtle1&quot;, ros::Time(0), ros::Duration(3.0)); // 等待变化
+listener.lookupTransform(&quot;/turtle2&quot;, &quot;/turtle1&quot;, ros::Time(0), transform); // 查询变换
+</code></pre></div><ul><li>根据距离查询结果移动海龟2向海龟1进行移动</li></ul> <div class="language-c++ extra-class"><pre class="language-text"><code>// 根据turtle1与turtle2坐标系之间的位置关系，发布turtle2的速度控制指令
+geometry_msgs::Twist vel_msg;
+vel_msg.angular.z = 4.0 * atan2(transform.getOrigin().y(), transform.getOrigin().x());
+vel_msg.linear.x = 0.5 * sqrt(pow(transform.getOrigin().x(), 2) + pow(transform.getOrigin().y(), 2));
+turtle_vel.publish(vel_msg);
+</code></pre></div><h4 id="_3-3-2流程总结"><a href="#_3-3-2流程总结" class="header-anchor">#</a> 3.3.2流程总结</h4> <p><strong>如何实现一个TF监听器？</strong></p> <blockquote><ul><li>定义TF监听器（TransformListener）</li> <li>查找坐标变换（waitForTransform、lookupTransform）</li></ul></blockquote> <h3 id="_3-4编译"><a href="#_3-4编译" class="header-anchor">#</a> 3.4编译</h3> <div class="language-cmake extra-class"><pre class="language-cmake"><code><span class="token keyword">add_executable</span><span class="token punctuation">(</span>turtle_tf_broadcaster src/turtle_tf_broadcaster.cpp<span class="token punctuation">)</span>
+<span class="token keyword">target_link_libraries</span><span class="token punctuation">(</span>turtle_tf_broadcaster <span class="token punctuation">${</span>catkin_LIBRARIES<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">add_executable</span><span class="token punctuation">(</span>turtle_tf_listener src/turtle_tf_listener.cpp<span class="token punctuation">)</span>
+<span class="token keyword">target_link_libraries</span><span class="token punctuation">(</span>turtle_tf_listener <span class="token punctuation">${</span>catkin_LIBRARIES<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="_3-5重映射机制"><a href="#_3-5重映射机制" class="header-anchor">#</a> 3.5重映射机制</h3> <p>为避免两个节点调用同一个方法而导致初始化节点时节点重名问题</p> <img src="https://i.loli.net/2021/07/30/alb9rjROHontN7P.png" alt="2021-07-30 17-47-35 的屏幕截图.png" style="zoom:50%;"> <p>如上代码中使用了<code>__name:=turtle1_tf_broadcaster</code>代码就是用来解决该问题的，这种方式被称为重映射机制</p> <p><strong>注意：是两个下划线！</strong></p> <p>重映射机制的原理就是对节点的重新命名，用于取代掉程序里面初始化时的命名</p> <h2 id="四、launch启动文件"><a href="#四、launch启动文件" class="header-anchor">#</a> 四、Launch启动文件</h2> <h3 id="_4-1概念"><a href="#_4-1概念" class="header-anchor">#</a> 4.1概念</h3> <p>Launch文件：通过XML文件实现多节点的配置和启动（可自动启动ROS Mater）</p> <p>Launch通过XML这种文件形式实现多个节点之间的配置和启动，使用lauch后可以不用启动多个终端来进行调试</p> <p>一个Launch文件就能启动多个节点</p> <h3 id="_4-2语法"><a href="#_4-2语法" class="header-anchor">#</a> 4.2语法</h3> <p>Launch文件中所有的语法都是通过xml语言进行描述的，主要由以下这些标签：</p> <h4 id="_4-2-1-launch-标签"><a href="#_4-2-1-launch-标签" class="header-anchor">#</a> 4.2.1<code>&lt;launch&gt;</code>标签</h4> <p>launch文件中的根元素</p> <h4 id="_4-2-2-node-标签"><a href="#_4-2-2-node-标签" class="header-anchor">#</a> 4.2.2<code>&lt;node&gt;</code>标签</h4> <p>表示启动节点，格式：<code>&lt;node pkg=&quot;package-name&quot; type=&quot;executable-name&quot; name=&quot;node-name&quot;&gt;</code></p> <ul><li>pkg：节点所在的功能包名称</li> <li>type：节点的可执行文件名称</li> <li>name：节点运行时的名称</li> <li>output（可选）：控制节点是否是要将日志信息打印到当前终端所在目录</li> <li>respawn（可选）：控制节点控制如果节点出现问题是否需要重启</li> <li>required（可选）：规定节点是否一定要启动</li> <li>ns（可选）：命名空间避免命名冲突</li> <li>args（可选）：给每个节点输出参数</li></ul> <img src="https://i.loli.net/2021/07/30/VLWpeyOFf9IDCwH.png" alt="2021-07-30 18-35-10 的屏幕截图.png" style="zoom:50%;"> <h4 id="_4-2-3-param-、-rosparam-标签"><a href="#_4-2-3-param-、-rosparam-标签" class="header-anchor">#</a> 4.2.3<code>&lt;param&gt;</code>、<code>&lt;rosparam&gt;</code>标签</h4> <p>设置ROS系统运行中的参数，储存在参数服务器中，格式：<code>&lt;param name=&quot;output_frame&quot; value=&quot;odom&quot;/&gt;</code></p> <ul><li>name：参数名</li> <li>value：参数值</li></ul> <p>加载参数文件中的多个参数：<code>&lt;rosparam file=&quot;params.yaml&quot; command=&quot;load&quot; ns=&quot;params&quot;&gt;</code></p> <h4 id="_4-2-4-arg-标签"><a href="#_4-2-4-arg-标签" class="header-anchor">#</a> 4.2.4<code>&lt;arg&gt;</code>标签</h4> <p>launch文件内部的局部变量，仅限于launch文件使用，格式：<code>&lt;arg name=&quot;arg-name&quot; default=&quot;arg-value&quot;/&gt;</code></p> <ul><li>name：参数名</li> <li>value：参数值</li></ul> <p>调用：</p> <div class="language-xml extra-class"><pre class="language-xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>foo<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>$(arg arg-name)<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>node</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>node<span class="token punctuation">&quot;</span></span> <span class="token attr-name">pkg</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>pakage<span class="token punctuation">&quot;</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>type<span class="token punctuation">&quot;</span></span> <span class="token attr-name">args</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>$(arg arg-name)<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+</code></pre></div><h4 id="_4-2-5-remap-标签"><a href="#_4-2-5-remap-标签" class="header-anchor">#</a> 4.2.5<code>&lt;remap&gt;</code>标签</h4> <p>重映射ROS计算图资源的命名，格式：<code>&lt;remap from=&quot;turtlebot/cmd_vel&quot; to=&quot;/cmd_vel&quot; /&gt;</code></p> <ul><li>from：原命名</li> <li>to：映射之后的命名</li></ul> <h4 id="_4-2-6-include-标签"><a href="#_4-2-6-include-标签" class="header-anchor">#</a> 4.2.6<code>&lt;include&gt;</code>标签</h4> <p>包含其他launch文件，类似C语言中的头文件包含，格式：<include file="$(dirname)/other.launch"></include></p> <ul><li>file：包含的其他launch文件路径</li></ul> <h3 id="_4-3使用方法"><a href="#_4-3使用方法" class="header-anchor">#</a> 4.3使用方法</h3> <h4 id="_4-3-1launch文件创建"><a href="#_4-3-1launch文件创建" class="header-anchor">#</a> 4.3.1Launch文件创建</h4> <p>和创建其他功能包一样，在src文件下创建一个专用于存放launch相关文件的功能包</p> <p>进入该文件夹后创建一个名为launch的文件夹，用于存放launch文件</p> <p>文件范例1：</p> <div class="language-xml extra-class"><pre class="language-xml"><code> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>launch</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token comment">&lt;!-- Turtlesim Node--&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>node</span> <span class="token attr-name">pkg</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>turtlesim<span class="token punctuation">&quot;</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>turtlesim_node<span class="token punctuation">&quot;</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>sim<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>node</span> <span class="token attr-name">pkg</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>turtlesim<span class="token punctuation">&quot;</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>turtle_teleop_key<span class="token punctuation">&quot;</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>teleop<span class="token punctuation">&quot;</span></span> <span class="token attr-name">output</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>screen<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>node</span> <span class="token attr-name">pkg</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>learning_tf<span class="token punctuation">&quot;</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>turtle_tf_broadcaster<span class="token punctuation">&quot;</span></span> <span class="token attr-name">args</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/turtle1<span class="token punctuation">&quot;</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>turtle1_tf_broadcaster<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>node</span> <span class="token attr-name">pkg</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>learning_tf<span class="token punctuation">&quot;</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>turtle_tf_broadcaster<span class="token punctuation">&quot;</span></span> <span class="token attr-name">args</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/turtle2<span class="token punctuation">&quot;</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>turtle2_tf_broadcaster<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>node</span> <span class="token attr-name">pkg</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>learning_tf<span class="token punctuation">&quot;</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>turtle_tf_listener<span class="token punctuation">&quot;</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>listener<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>launch</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>文件范例2：</p> <div class="language-xml extra-class"><pre class="language-xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>launch</span><span class="token punctuation">&gt;</span></span>
+
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/turtle_number<span class="token punctuation">&quot;</span></span>   <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>2<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>node</span> <span class="token attr-name">pkg</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>turtlesim<span class="token punctuation">&quot;</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>turtlesim_node<span class="token punctuation">&quot;</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>turtlesim_node<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>turtle_name1<span class="token punctuation">&quot;</span></span>   <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>Tom<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>turtle_name2<span class="token punctuation">&quot;</span></span>   <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>Jerry<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rosparam</span> <span class="token attr-name">file</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>$(find learning_launch)/config/param.yaml<span class="token punctuation">&quot;</span></span> <span class="token attr-name">command</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>load<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>node</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>node</span> <span class="token attr-name">pkg</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>turtlesim<span class="token punctuation">&quot;</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>turtle_teleop_key<span class="token punctuation">&quot;</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>turtle_teleop_key<span class="token punctuation">&quot;</span></span> <span class="token attr-name">output</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>screen<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>launch</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h4 id="_4-3-2launch文件启动"><a href="#_4-3-2launch文件启动" class="header-anchor">#</a> 4.3.2Launch文件启动</h4> <p>首先还是需要对文件进行相关的编译</p> <p>使用roslaunch命令，用于专门启动launch文件，命令格式：</p> <div class="language-shell extra-class"><pre class="language-shell"><code>roslaunch ***<span class="token punctuation">(</span>功能包名<span class="token punctuation">)</span> ***<span class="token punctuation">(</span>launch文件名<span class="token punctuation">)</span>
+</code></pre></div></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-70334359><li class="level-2" data-v-70334359><a href="/blog/article/ros/05.html#一、参数使用与编程" class="sidebar-link reco-side-一、参数使用与编程" data-v-70334359>一、参数使用与编程</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/05.html#_1-1参数模型" class="sidebar-link reco-side-_1-1参数模型" data-v-70334359>1.1参数模型</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/05.html#_1-2创建功能包" class="sidebar-link reco-side-_1-2创建功能包" data-v-70334359>1.2创建功能包</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/05.html#_1-3parameter命令行使用" class="sidebar-link reco-side-_1-3parameter命令行使用" data-v-70334359>1.3Parameter命令行使用</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/05.html#_1-4编程实现" class="sidebar-link reco-side-_1-4编程实现" data-v-70334359>1.4编程实现</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/05.html#_1-5配置编译规则" class="sidebar-link reco-side-_1-5配置编译规则" data-v-70334359>1.5配置编译规则</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/05.html#_1-6编译运行" class="sidebar-link reco-side-_1-6编译运行" data-v-70334359>1.6编译运行</a></li><li class="level-2" data-v-70334359><a href="/blog/article/ros/05.html#二、ros中坐标管理系统tf" class="sidebar-link reco-side-二、ros中坐标管理系统tf" data-v-70334359>二、ROS中坐标管理系统TF</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/05.html#_2-1概念" class="sidebar-link reco-side-_2-1概念" data-v-70334359>2.1概念</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/05.html#_2-2基本功能演示" class="sidebar-link reco-side-_2-2基本功能演示" data-v-70334359>2.2基本功能演示</a></li><li class="level-2" data-v-70334359><a href="/blog/article/ros/05.html#三、tf坐标系广播与监听" class="sidebar-link reco-side-三、tf坐标系广播与监听" data-v-70334359>三、TF坐标系广播与监听</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/05.html#_3-1创建功能包" class="sidebar-link reco-side-_3-1创建功能包" data-v-70334359>3.1创建功能包</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/05.html#_3-2tf广播器的创建" class="sidebar-link reco-side-_3-2tf广播器的创建" data-v-70334359>3.2TF广播器的创建</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/05.html#_3-3tf监听器的创建" class="sidebar-link reco-side-_3-3tf监听器的创建" data-v-70334359>3.3TF监听器的创建</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/05.html#_3-4编译" class="sidebar-link reco-side-_3-4编译" data-v-70334359>3.4编译</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/05.html#_3-5重映射机制" class="sidebar-link reco-side-_3-5重映射机制" data-v-70334359>3.5重映射机制</a></li><li class="level-2" data-v-70334359><a href="/blog/article/ros/05.html#四、launch启动文件" class="sidebar-link reco-side-四、launch启动文件" data-v-70334359>四、Launch启动文件</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/05.html#_4-1概念" class="sidebar-link reco-side-_4-1概念" data-v-70334359>4.1概念</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/05.html#_4-2语法" class="sidebar-link reco-side-_4-2语法" data-v-70334359>4.2语法</a></li><li class="level-3" data-v-70334359><a href="/blog/article/ros/05.html#_4-3使用方法" class="sidebar-link reco-side-_4-3使用方法" data-v-70334359>4.3使用方法</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><div class="kanbanniang" data-v-5775ee02><div class="banniang-container" style="display:;" data-v-5775ee02><div class="messageBox" style="right:68px;bottom:190px;display:none;" data-v-5775ee02>
+      欢迎来到 Oreo's Blog
+    </div> <div class="operation" style="right:90px;bottom:40px;display:none;" data-v-5775ee02><i class="kbnfont kbn-ban-home ban-home" data-v-5775ee02></i> <i class="kbnfont kbn-ban-message message" data-v-5775ee02></i> <i class="kbnfont kbn-ban-close close" data-v-5775ee02></i> <a target="_blank" href="https://vuepress-theme-reco.recoluan.com/views/plugins/kanbanniang.html" data-v-5775ee02><i class="kbnfont kbn-ban-info info" data-v-5775ee02></i></a> <i class="kbnfont kbn-ban-theme skin" style="display:none;" data-v-5775ee02></i></div> <canvas id="banniang" width="150" height="220" class="live2d" style="position:fixed;right:25px;bottom:5px;opacity:1;z-index:99999;" data-v-5775ee02></canvas></div> <div class="showBanNiang" style="display:none;" data-v-5775ee02>
+    看板娘
+  </div></div></div></div>
+    <script src="/blog/assets/js/app.b808e0f6.js" defer></script><script src="/blog/assets/js/3.527c74a3.js" defer></script><script src="/blog/assets/js/1.832c2bf8.js" defer></script><script src="/blog/assets/js/100.0e7a5044.js" defer></script>
+  </body>
+</html>
